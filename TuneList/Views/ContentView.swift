@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        
         NavigationView {
             NavigationLink {
-                QuickReferenceView(songs:)
+                QuickReferenceView()
             } label: {
-                Text("HERE")
+                Text("Quick Reference")
             }
         }
     }

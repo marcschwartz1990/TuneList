@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct QuickReferenceView: View {
-    @State private var sampleTuneTitles = ["Body and Soul", "All The Things You Are", "Just Friends"]
-    
-    let songs: [Song]
+    @StateObject var songs = Songs()
+    @State private var showingsAddSong = false
     
     var body: some View {
-        List {
-            ForEach(songs) { title in
-                SongTitleView(song: Song())
+        NavigationView {
+            List {
+                ForEach(songs.songs) { song in
+                    SongTitleView(songs: songs, song: song)
+                }
+                .onDelete(perform: songs.removeSongs)
+            }
+            .navigationTitle("Quick Reference")
+            .toolbar {
+                Button {
+                    showingsAddSong = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+            .sheet(isPresented: $showingsAddSong) {
+                AddSongView(songs: songs)
             }
         }
     }
@@ -23,6 +36,6 @@ struct QuickReferenceView: View {
 
 struct QuickReferenceView_Previews: PreviewProvider {
     static var previews: some View {
-        QuickReferenceView(songs: [Song(), Song()])
+        QuickReferenceView()
     }
 }

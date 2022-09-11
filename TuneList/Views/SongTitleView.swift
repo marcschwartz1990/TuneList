@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SongTitleView: View {
-    var song = Song()
+    @ObservedObject var songs: Songs
+    
+    var song: Song
     
     var body: some View {
         HStack {
@@ -59,6 +61,6 @@ struct SongTitleView: View {
 
 struct SongTitleView_Previews: PreviewProvider {
     static var previews: some View {
-        SongTitleView(song: Song())
+        SongTitleView(songs: Songs(), song: Song(title: "Body and Soul", key: "Db", style: "Ballad"))
     }
 }
