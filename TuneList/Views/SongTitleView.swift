@@ -15,16 +15,14 @@ struct SongTitleView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("\(song.title)")
-                    .bold()
+                Text("**\(song.title)**")
+                    .padding([.bottom, .trailing], 2)
                 HStack {
                     Text("**Key**: \(song.key) Major")
-                        .font(.caption)
                     Text("|")
-                        .font(.caption)
                     Text("**Style**: \(song.style)")
-                        .font(.caption)
                 }
+                .font(.caption)
             }
             
             Spacer()
