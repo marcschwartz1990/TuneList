@@ -18,7 +18,7 @@ struct SongTitleView: View {
                 Text("**\(song.title)**")
                     .padding([.bottom, .trailing], 2)
                 HStack {
-                    Text("**Key**: \(song.key) Major")
+                    Text("**Key**: \(song.key)")
                     Text("|")
                     Text("**Style**: \(song.style)")
                 }

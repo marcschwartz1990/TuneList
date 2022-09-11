@@ -12,12 +12,14 @@ struct AddSongView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var title = ""
-    @State private var key = "C"
+    @State private var key = "C Major"
     @State private var style = ""
     
-    let keys = ["Ab", "A", "Bb", "B", "C",
-                "C#", "Db", "D", "Eb", "E",
-                "F", "F#", "G"
+    let keys = ["Ab Major", "A Major", "Bb Major", "B Major", "C Major",
+                "C# Major", "Db Major", "D Major", "Eb Major", "E Major",
+                "F Major", "F# Major", "G Major", "Ab minor", "A minor",
+                "Bb minor", "B minor", "C minor", "C# minor", "Db minor",
+                "D minor", "Eb minor", "E minor", "F minor", "F# minor", "G minor"
                ]
     
     var body: some View {
