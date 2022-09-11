@@ -18,13 +18,17 @@ struct QuickReferenceView: View {
                     SongTitleView(songs: songs, song: song)
                 }
                 .onDelete(perform: songs.removeSongs)
+                .onMove(perform: songs.moveSongs)
             }
             .navigationTitle("Quick Reference")
             .toolbar {
-                Button {
-                    showingsAddSong = true
-                } label: {
-                    Image(systemName: "plus")
+                HStack {
+                    EditButton()
+                    Button {
+                        showingsAddSong = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
                 }
             }
             .sheet(isPresented: $showingsAddSong) {

@@ -32,4 +32,8 @@ class Songs: ObservableObject {
     func removeSongs(at offsets: IndexSet) {
         songs.remove(atOffsets: offsets)
     }
+    
+    func moveSongs(fromOffsets source: IndexSet, toOffset destination: Int) {
+      songs.move(fromOffsets: source, toOffset: destination)
+    }
 }
