@@ -10,6 +10,8 @@ import SwiftUI
 struct SongTitleView: View {
     @ObservedObject var songs: Songs
     
+    @State private var isShowingEditSongView = false
+    
     var song: Song
     
     var body: some View {
@@ -32,7 +34,7 @@ struct SongTitleView: View {
                     showSongDetailView()
                 }
                 Button("Edit Song Info") {
-                    openSongInfoEditor()
+                    openEditSongView()
                 }
                 Button("Play Song") {
                     playSong()
@@ -40,9 +42,13 @@ struct SongTitleView: View {
             } label: {
                 Image(systemName: "ellipsis")
             }
+            .sheet(isPresented: $isShowingEditSongView) {
+                EditSongView(songs: Songs())
+            }
         }
         .padding()
     }
+        
     
     func playSong() {
         print("Song being played")
@@ -52,9 +58,11 @@ struct SongTitleView: View {
         print("Song Details")
     }
     
-    func openSongInfoEditor() {
+    func openEditSongView() {
+        isShowingEditSongView = true
         print("Song Info Editor")
     }
+    
 }
 
 struct SongTitleView_Previews: PreviewProvider {

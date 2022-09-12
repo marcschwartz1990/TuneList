@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QuickReferenceView: View {
     @StateObject var songs = Songs()
-    @State private var showingsAddSong = false
+    @State private var showingAddSong = false
     
     var body: some View {
         NavigationView {
@@ -32,13 +32,13 @@ struct QuickReferenceView: View {
                     EditButton()
                     
                     Button {
-                        showingsAddSong = true
+                        showingAddSong = true
                     } label: {
                         Image(systemName: "plus")
                     }
                 }
             }
-            .sheet(isPresented: $showingsAddSong) {
+            .sheet(isPresented: $showingAddSong) {
                 AddSongView(songs: songs)
             }
         }
