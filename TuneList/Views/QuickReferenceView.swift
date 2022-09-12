@@ -23,7 +23,14 @@ struct QuickReferenceView: View {
             .navigationTitle("Quick Reference")
             .toolbar {
                 HStack {
+                    Button {
+                        print("Sort by Button Pressed")
+                    } label: {
+                        Text("Sort by")
+                    }
+                    
                     EditButton()
+                    
                     Button {
                         showingsAddSong = true
                     } label: {

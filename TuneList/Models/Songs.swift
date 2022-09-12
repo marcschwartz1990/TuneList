@@ -29,6 +29,7 @@ class Songs: ObservableObject {
         songs = []
     }
     
+    // Completely removes song from database
     func removeSongs(at offsets: IndexSet) {
         songs.remove(atOffsets: offsets)
     }

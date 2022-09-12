@@ -1,8 +1,8 @@
 //
-//  AddSongView.swift
+//  SongInfoEditorView.swift
 //  TuneList
 //
-//  Created by Marc-Developer on 9/10/22.
+//  Created by Marc-Developer on 9/9/22.
 //
 
 import SwiftUI
@@ -25,15 +25,31 @@ struct AddSongView: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("Song Title", text: $title)
-                    
-                Picker("Key", selection: $key) {
-                    ForEach(keys, id: \.self) {
-                        Text($0)
+                Section {
+                    TextField("Song Title", text: $title)
+                        
+                    Picker("Key", selection: $key) {
+                        ForEach(keys, id: \.self) {
+                            Text($0)
+                        }
                     }
+
+                    TextField("Style", text: $style)
+                    
+                } header: {
+                    Text("Quick Reference Info")
                 }
                 
-                TextField("Style", text: $style)
+                Section {
+                    Text("Placeholder: Lead Sheet Upload")
+                    Text("Placeholder: Lyrics")
+                    Text("Placeholder: Composer")
+                    Text("Placeholder: Date Composed")
+                    Text("ETC...")
+                } header: {
+                    Text("More Info")
+                }
+                
             }
             .navigationTitle("Add New Song")
             .toolbar {
