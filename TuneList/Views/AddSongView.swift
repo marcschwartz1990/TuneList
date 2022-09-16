@@ -15,13 +15,6 @@ struct AddSongView: View {
     @State private var key = "C Major"
     @State private var style = ""
     
-    let keys = ["Ab Major", "A Major", "Bb Major", "B Major", "C Major",
-                "C# Major", "Db Major", "D Major", "Eb Major", "E Major",
-                "F Major", "F# Major", "G Major", "Ab minor", "A minor",
-                "Bb minor", "B minor", "C minor", "C# minor", "Db minor",
-                "D minor", "Eb minor", "E minor", "F minor", "F# minor", "G minor"
-               ]
-    
     var body: some View {
         NavigationView {
             Form {
@@ -29,9 +22,21 @@ struct AddSongView: View {
                     TextField("Song Title", text: $title)
                         
                     Picker("Key", selection: $key) {
-                        ForEach(keys, id: \.self) {
-                            Text($0)
-                        }
+                            Section {
+                                ForEach(songs.majorKeys, id: \.self) {
+                                    Text($0)
+                                }
+                            } header: {
+                                Text("Major keys")
+                            }
+                            
+                            Section {
+                                ForEach(songs.minorKeys, id: \.self) {
+                                    Text($0)
+                                }
+                            } header: {
+                                Text("minor keys")
+                            }
                     }
 
                     TextField("Style", text: $style)

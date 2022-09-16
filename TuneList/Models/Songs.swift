@@ -10,6 +10,7 @@ import Foundation
 class Songs: ObservableObject {
     @Published var songs = [Song]() {
         didSet {
+            // didSet executes the below code as soon as the property Songs.songs changes
             let encoder = JSONEncoder()
             
             if let encoded = try? encoder.encode(songs) {
@@ -28,6 +29,15 @@ class Songs: ObservableObject {
         
         songs = []
     }
+    
+    let majorKeys = ["Ab Major", "A Major", "Bb Major", "B Major", "C Major",
+                "C# Major", "Db Major", "D Major", "Eb Major", "E Major",
+                "F Major", "F# Major", "G Major"
+               ]
+    
+    let minorKeys = ["Ab minor", "A minor",
+                     "Bb minor", "B minor", "C minor", "C# minor", "Db minor",
+                     "D minor", "Eb minor", "E minor", "F minor", "F# minor", "G minor"]
     
     // Completely removes song from database
     func removeSongs(at offsets: IndexSet) {
