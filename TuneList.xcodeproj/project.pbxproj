@@ -17,6 +17,8 @@
 		AF00BD2428CBFEC0001A8D01 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00BD2328CBFEC0001A8D01 /* Song.swift */; };
 		AF00BD2628CD10B0001A8D01 /* PracticeEditableListSundell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00BD2528CD10B0001A8D01 /* PracticeEditableListSundell.swift */; };
 		AF00BD2A28CD771B001A8D01 /* Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00BD2928CD771B001A8D01 /* Songs.swift */; };
+		AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616028D4DBE100864239 /* TuneList.xcdatamodeld */; };
+		AF5A616428D4DC4300864239 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616328D4DC4300864239 /* DataController.swift */; };
 		FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93628CE5D740023AF8D /* SongIndexView.swift */; };
 		FF79C93B28CEEB200023AF8D /* EditSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93A28CEEB200023AF8D /* EditSongView.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +35,8 @@
 		AF00BD2328CBFEC0001A8D01 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		AF00BD2528CD10B0001A8D01 /* PracticeEditableListSundell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeEditableListSundell.swift; sourceTree = "<group>"; };
 		AF00BD2928CD771B001A8D01 /* Songs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songs.swift; sourceTree = "<group>"; };
+		AF5A616128D4DBE100864239 /* TuneList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TuneList.xcdatamodel; sourceTree = "<group>"; };
+		AF5A616328D4DC4300864239 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		FF79C93628CE5D740023AF8D /* SongIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongIndexView.swift; sourceTree = "<group>"; };
 		FF79C93A28CEEB200023AF8D /* EditSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSongView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +92,8 @@
 		AF00BD2728CD7461001A8D01 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AF5A616028D4DBE100864239 /* TuneList.xcdatamodeld */,
+				AF5A616328D4DC4300864239 /* DataController.swift */,
 				AF00BD2328CBFEC0001A8D01 /* Song.swift */,
 				AF00BD2928CD771B001A8D01 /* Songs.swift */,
 			);
@@ -98,10 +104,10 @@
 			isa = PBXGroup;
 			children = (
 				AF00BD0F28CA7937001A8D01 /* ContentView.swift */,
+				AF00BD2128CBFE38001A8D01 /* AddSongView.swift */,
 				AF00BD1D28CA7970001A8D01 /* QuickReferenceView.swift */,
 				FF79C93628CE5D740023AF8D /* SongIndexView.swift */,
 				AF00BD1F28CB9EC9001A8D01 /* SongTitleView.swift */,
-				AF00BD2128CBFE38001A8D01 /* AddSongView.swift */,
 				FF79C93A28CEEB200023AF8D /* EditSongView.swift */,
 			);
 			path = Views;
@@ -178,7 +184,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF00BD2A28CD771B001A8D01 /* Songs.swift in Sources */,
+				AF5A616428D4DC4300864239 /* DataController.swift in Sources */,
 				AF00BD2628CD10B0001A8D01 /* PracticeEditableListSundell.swift in Sources */,
+				AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */,
 				AF00BD2428CBFEC0001A8D01 /* Song.swift in Sources */,
 				FF79C93B28CEEB200023AF8D /* EditSongView.swift in Sources */,
 				AF00BD1028CA7937001A8D01 /* ContentView.swift in Sources */,
@@ -387,6 +395,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AF5A616028D4DBE100864239 /* TuneList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AF5A616128D4DBE100864239 /* TuneList.xcdatamodel */,
+			);
+			currentVersion = AF5A616128D4DBE100864239 /* TuneList.xcdatamodel */;
+			path = TuneList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AF00BD0228CA7937001A8D01 /* Project object */;
 }

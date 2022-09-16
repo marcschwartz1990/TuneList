@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    // New Since COREDATA
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.title)
+    ]) var songs: FetchedResults<Song>
+    
     var body: some View {
         
         NavigationView {
@@ -20,7 +26,7 @@ struct ContentView: View {
                 .padding()
                 
                 NavigationLink {
-                    SongIndexView(songs: Songs())
+                    SongIndexView()
                 } label: {
                     Text("Song Index")
                 }

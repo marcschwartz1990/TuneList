@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct QuickReferenceView: View {
-    @StateObject var songs = Songs()
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.title)
+    ]) var songs: FetchedResults<Song>
+    
     @State private var showingAddSong = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(songs.songs) { song in
-                    SongTitleView(songs: songs, song: song)
+                ForEach(songs) { song in
+                    SongTitleView(song: song)
                 }
-                .onDelete(perform: songs.removeSongs)
-                .onMove(perform: songs.moveSongs)
+                .onDelete(perform: deleteSongs)
             }
             .navigationTitle("Quick Reference")
             .toolbar {
@@ -39,9 +42,18 @@ struct QuickReferenceView: View {
                 }
             }
             .sheet(isPresented: $showingAddSong) {
-                AddSongView(songs: songs)
+                AddSongView()
             }
         }
+    }
+    
+    func deleteSongs(at offsets: IndexSet) {
+        for offset in offsets {
+            let song = songs[offset]
+            moc.delete(song)
+        }
+        
+        //        try? moc.save() // Commented out for testing purposes.
     }
 }
 

@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct SongIndexView: View {
-    @StateObject var songs = Songs()
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.title)
+    ]) var songs: FetchedResults<Song>
+    
     @State private var showingAddSong = false
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("\(songs.songs.count) Songs in Index")
+                Text("\(songs.count) Songs in Index")
                 
             List {
-                ForEach(songs.songs) { song in
-                    Text("\(song.title)")
-                    
+                ForEach(songs) { song in
+                    Text("\(song.title ?? "Unknown Song")")
                 }
-                .onDelete(perform: songs.removeSongs)
-                .onMove(perform: songs.moveSongs)
+                .onDelete(perform: deleteSongs)
             }
             .navigationTitle("Song Index")
             .toolbar {
@@ -36,10 +38,19 @@ struct SongIndexView: View {
                 }
             }
             .sheet(isPresented: $showingAddSong) {
-                AddSongView(songs: songs)
+                AddSongView()
             }
             }
         }
+    }
+    
+    func deleteSongs(at offsets: IndexSet) {
+        for offset in offsets {
+            let song = songs[offset]
+            moc.delete(song)
+        }
+        
+        //        try? moc.save() // Commented out for testing purposes.
     }
 }
 
