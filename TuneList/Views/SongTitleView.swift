@@ -31,9 +31,11 @@ struct SongTitleView: View {
                 Button("Song Details") {
                     showSongDetailView()
                 }
+                
                 Button("Edit Song Info") {
                     openEditSongView()
                 }
+                
                 Button("Play Song") {
                     playSong()
                 }

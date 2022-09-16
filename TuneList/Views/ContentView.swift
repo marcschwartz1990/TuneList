@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    // New Since COREDATA
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: [
         SortDescriptor(\.title)
