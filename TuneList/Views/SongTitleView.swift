@@ -11,12 +11,13 @@ struct SongTitleView: View {
     let song: Song
     
     @State private var isShowingEditSongView = false
+    @State private var isShowingSongDetailView = false
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text("**\(song.title ?? "Unknown Song")**")
-                    .padding([.bottom, .trailing], 2)
+                    .padding([.bottom, .trailing], 1)
                 HStack {
                     Text("**Key**: \(song.key ?? "Unknown Key")")
                     Text("|")
@@ -40,7 +41,19 @@ struct SongTitleView: View {
                     playSong()
                 }
             } label: {
-                Image(systemName: "ellipsis")
+                ZStack {
+                    Circle()
+                        .frame(width: 28, height: 28)
+                        .foregroundColor(.gray.opacity(0.5))
+                    
+                    Image(systemName: "ellipsis")
+                        .font(.headline)
+                    
+
+                }
+            }
+            .sheet(isPresented: $isShowingSongDetailView) {
+                SongDetailView(song: song)
             }
 //            .sheet(isPresented: $isShowingEditSongView) {
 //                EditSongView(songs: Songs())
@@ -55,7 +68,7 @@ struct SongTitleView: View {
     }
     
     func showSongDetailView() {
-        print("Song Details")
+        isShowingSongDetailView = true
     }
     
     func openEditSongView() {

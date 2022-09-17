@@ -16,20 +16,22 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView {
-            VStack {
-                NavigationLink {
-                    QuickReferenceView()
-                } label: {
-                    Text("Quick Reference")
+            List {
+                Section {
+                    NavigationLink {
+                        QuickReferenceView()
+                    } label: {
+                        Text("Quick Reference")
+                    }
+                    
+                    NavigationLink {
+                        SongIndexView()
+                    } label: {
+                        Text("Song Index")
+                    }
                 }
                 .padding()
-                
-                NavigationLink {
-                    SongIndexView()
-                } label: {
-                    Text("Song Index")
-                }
-                .padding()
+                .font(.headline)
             }
         }
     }

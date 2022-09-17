@@ -23,26 +23,20 @@ struct QuickReferenceView: View {
                 }
                 .onDelete(perform: deleteSongs)
             }
-            .navigationTitle("Quick Reference")
-            .toolbar {
-                HStack {
-                    Button {
-                        print("Sort by Button Pressed")
-                    } label: {
-                        Text("Sort by")
-                    }
-                    
-                    EditButton()
-                    
-                    Button {
-                        showingAddSong = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-            }
             .sheet(isPresented: $showingAddSong) {
                 AddSongView()
+            }
+        }
+        .navigationTitle("Quick Reference")
+        .toolbar {
+            HStack {
+                EditButton()
+                
+                Button {
+                    showingAddSong = true
+                } label: {
+                    Image(systemName: "plus")
+                }
             }
         }
     }

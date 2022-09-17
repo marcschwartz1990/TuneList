@@ -17,6 +17,7 @@
 		AF00BD2628CD10B0001A8D01 /* PracticeEditableListSundell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00BD2528CD10B0001A8D01 /* PracticeEditableListSundell.swift */; };
 		AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616028D4DBE100864239 /* TuneList.xcdatamodeld */; };
 		AF5A616428D4DC4300864239 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616328D4DC4300864239 /* DataController.swift */; };
+		AF5A616628D55DB500864239 /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616528D55DB500864239 /* SongDetailView.swift */; };
 		FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93628CE5D740023AF8D /* SongIndexView.swift */; };
 		FF79C93B28CEEB200023AF8D /* EditSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93A28CEEB200023AF8D /* EditSongView.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 		AF00BD2528CD10B0001A8D01 /* PracticeEditableListSundell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeEditableListSundell.swift; sourceTree = "<group>"; };
 		AF5A616128D4DBE100864239 /* TuneList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TuneList.xcdatamodel; sourceTree = "<group>"; };
 		AF5A616328D4DC4300864239 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		AF5A616528D55DB500864239 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
 		FF79C93628CE5D740023AF8D /* SongIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongIndexView.swift; sourceTree = "<group>"; };
 		FF79C93A28CEEB200023AF8D /* EditSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSongView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 				AF00BD1D28CA7970001A8D01 /* QuickReferenceView.swift */,
 				FF79C93628CE5D740023AF8D /* SongIndexView.swift */,
 				AF00BD1F28CB9EC9001A8D01 /* SongTitleView.swift */,
+				AF5A616528D55DB500864239 /* SongDetailView.swift */,
 				FF79C93A28CEEB200023AF8D /* EditSongView.swift */,
 			);
 			path = Views;
@@ -177,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF5A616628D55DB500864239 /* SongDetailView.swift in Sources */,
 				AF5A616428D4DC4300864239 /* DataController.swift in Sources */,
 				AF00BD2628CD10B0001A8D01 /* PracticeEditableListSundell.swift in Sources */,
 				AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */,

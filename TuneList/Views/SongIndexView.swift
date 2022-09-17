@@ -17,28 +17,25 @@ struct SongIndexView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("\(songs.count) Songs in Index")
-                
-                List {
-                    ForEach(songs) { song in
-                        Text("\(song.title ?? "Unknown Song")")
-                    }
-                    .onDelete(perform: deleteSongs)
+            List {
+                ForEach(songs) { song in
+                    Text("\(song.title ?? "Unknown Song")")
                 }
-                .navigationTitle("Song Index")
-                .toolbar {
-                    HStack {
-                        EditButton()
-                        Button {
-                            showingAddSong = true
-                        } label: {
-                            Image(systemName: "plus")
-                        }
-                    }
-                }
-                .sheet(isPresented: $showingAddSong) {
-                    AddSongView()
+                .onDelete(perform: deleteSongs)
+            }
+            
+            .sheet(isPresented: $showingAddSong) {
+                AddSongView()
+            }
+        }
+        .navigationTitle("Song Index")
+        .toolbar {
+            HStack {
+                EditButton()
+                Button {
+                    showingAddSong = true
+                } label: {
+                    Image(systemName: "plus")
                 }
             }
         }
