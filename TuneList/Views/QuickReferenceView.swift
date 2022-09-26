@@ -13,7 +13,9 @@ struct QuickReferenceView: View {
         SortDescriptor(\.title)
     ]) var songs: FetchedResults<Song>
     
-    @State private var showingAddSong = false
+    @State private var showingAddEditSong = false
+    
+    @State private var selectedSong: Song?
     
     var body: some View {
         NavigationView {
@@ -23,8 +25,11 @@ struct QuickReferenceView: View {
                 }
                 .onDelete(perform: deleteSongs)
             }
-            .sheet(isPresented: $showingAddSong) {
-                AddSongView()
+            .sheet(item: $selectedSong, content: { song in
+                AddEditSongView(song: selectedSong)
+            })
+            .sheet(isPresented: $showingAddEditSong, onDismiss: {selectedSong = nil}) {
+                AddEditSongView(song: selectedSong)
             }
         }
         .navigationTitle("Quick Reference")
@@ -33,7 +38,7 @@ struct QuickReferenceView: View {
                 EditButton()
                 
                 Button {
-                    showingAddSong = true
+                    showingAddEditSong = true
                 } label: {
                     Image(systemName: "plus")
                 }

@@ -7,32 +7,37 @@
 
 import SwiftUI
 
-struct AddSongView: View {
+struct AddEditSongView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
     
-    @State private var title = ""
-    @State private var key = "C Major"
-    @State private var style = ""
+    @State private var title: String = ""
+    @State private var key: String = "C Major"
+    @State private var style: String = ""
     
-    let majorKeys = ["Ab Major", "A Major", "Bb Major", "B Major", "C Major",
-                    "C# Major", "Db Major", "D Major", "Eb Major", "E Major",
-                    "F Major", "F# Major", "G Major"
-                   ]
+    let navTitle: String
+    let song: Song?
+    let keys = Keys()
     
-    let minorKeys = ["Ab minor", "A minor",
-                     "Bb minor", "B minor", "C minor", "C# minor", "Db minor",
-                     "D minor", "Eb minor", "E minor", "F minor", "F# minor", "G minor"]
+    init(song: Song?) {
+        self.song = song
+        self.navTitle = (song != nil) == true ? "Edit Song" : "Add New Song"
+    }
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
                     TextField("Song Title", text: $title)
+                        .onAppear {
+                            title = song?.title ?? ""
+                            key = song?.key ?? "C Major"
+                            style = song?.style ?? ""
+                        }
                         
                     Picker("Key", selection: $key) {
                             Section {
-                                ForEach(majorKeys, id: \.self) {
+                                ForEach(keys.majorKeys, id: \.self) {
                                     Text($0)
                                 }
                             } header: {
@@ -40,7 +45,7 @@ struct AddSongView: View {
                             }
                             
                             Section {
-                                ForEach(minorKeys, id: \.self) {
+                                ForEach(keys.minorKeys, id: \.self) {
                                     Text($0)
                                 }
                             } header: {
@@ -65,7 +70,7 @@ struct AddSongView: View {
                 }
                 
             }
-            .navigationTitle("Add New Song")
+            .navigationTitle(navTitle)
             .toolbar {
                 Button("Save") {
                     let newSong = Song(context: moc)
@@ -74,6 +79,7 @@ struct AddSongView: View {
                     newSong.key = key
                     newSong.style = style
                     
+                    // MARK: - From edit view, I need this to update an existing song, not save a new one.
                     try? moc.save()
                     dismiss()
                 }
@@ -82,8 +88,8 @@ struct AddSongView: View {
     }
 }
 
-struct AddSongView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddSongView()
-    }
-}
+//struct AddEditSongView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddSongView()
+//    }
+//}

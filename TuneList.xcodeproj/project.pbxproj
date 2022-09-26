@@ -13,13 +13,15 @@
 		AF00BD1528CA7938001A8D01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF00BD1428CA7938001A8D01 /* Preview Assets.xcassets */; };
 		AF00BD1E28CA7970001A8D01 /* QuickReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00BD1D28CA7970001A8D01 /* QuickReferenceView.swift */; };
 		AF00BD2028CB9EC9001A8D01 /* SongTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00BD1F28CB9EC9001A8D01 /* SongTitleView.swift */; };
-		AF00BD2228CBFE38001A8D01 /* AddSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00BD2128CBFE38001A8D01 /* AddSongView.swift */; };
+		AF00BD2228CBFE38001A8D01 /* AddEditSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00BD2128CBFE38001A8D01 /* AddEditSongView.swift */; };
 		AF00BD2628CD10B0001A8D01 /* PracticeEditableListSundell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00BD2528CD10B0001A8D01 /* PracticeEditableListSundell.swift */; };
+		AF17909E28E1FB41002ECB29 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17909D28E1FB41002ECB29 /* Keys.swift */; };
 		AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616028D4DBE100864239 /* TuneList.xcdatamodeld */; };
 		AF5A616428D4DC4300864239 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616328D4DC4300864239 /* DataController.swift */; };
 		AF5A616628D55DB500864239 /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616528D55DB500864239 /* SongDetailView.swift */; };
+		AF5A616828D576D500864239 /* SongTitleIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616728D576D500864239 /* SongTitleIndexView.swift */; };
+		AF70C5AF28D588710007F4F7 /* SetListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF70C5AE28D588710007F4F7 /* SetListsView.swift */; };
 		FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93628CE5D740023AF8D /* SongIndexView.swift */; };
-		FF79C93B28CEEB200023AF8D /* EditSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93A28CEEB200023AF8D /* EditSongView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,13 +32,15 @@
 		AF00BD1428CA7938001A8D01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AF00BD1D28CA7970001A8D01 /* QuickReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickReferenceView.swift; sourceTree = "<group>"; };
 		AF00BD1F28CB9EC9001A8D01 /* SongTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTitleView.swift; sourceTree = "<group>"; };
-		AF00BD2128CBFE38001A8D01 /* AddSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongView.swift; sourceTree = "<group>"; };
+		AF00BD2128CBFE38001A8D01 /* AddEditSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditSongView.swift; sourceTree = "<group>"; };
 		AF00BD2528CD10B0001A8D01 /* PracticeEditableListSundell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeEditableListSundell.swift; sourceTree = "<group>"; };
+		AF17909D28E1FB41002ECB29 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		AF5A616128D4DBE100864239 /* TuneList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TuneList.xcdatamodel; sourceTree = "<group>"; };
 		AF5A616328D4DC4300864239 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		AF5A616528D55DB500864239 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
+		AF5A616728D576D500864239 /* SongTitleIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTitleIndexView.swift; sourceTree = "<group>"; };
+		AF70C5AE28D588710007F4F7 /* SetListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListsView.swift; sourceTree = "<group>"; };
 		FF79C93628CE5D740023AF8D /* SongIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongIndexView.swift; sourceTree = "<group>"; };
-		FF79C93A28CEEB200023AF8D /* EditSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSongView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			children = (
 				AF5A616028D4DBE100864239 /* TuneList.xcdatamodeld */,
 				AF5A616328D4DC4300864239 /* DataController.swift */,
+				AF17909D28E1FB41002ECB29 /* Keys.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,12 +105,13 @@
 			isa = PBXGroup;
 			children = (
 				AF00BD0F28CA7937001A8D01 /* ContentView.swift */,
-				AF00BD2128CBFE38001A8D01 /* AddSongView.swift */,
+				AF00BD2128CBFE38001A8D01 /* AddEditSongView.swift */,
 				AF00BD1D28CA7970001A8D01 /* QuickReferenceView.swift */,
-				FF79C93628CE5D740023AF8D /* SongIndexView.swift */,
 				AF00BD1F28CB9EC9001A8D01 /* SongTitleView.swift */,
+				FF79C93628CE5D740023AF8D /* SongIndexView.swift */,
+				AF70C5AE28D588710007F4F7 /* SetListsView.swift */,
+				AF5A616728D576D500864239 /* SongTitleIndexView.swift */,
 				AF5A616528D55DB500864239 /* SongDetailView.swift */,
-				FF79C93A28CEEB200023AF8D /* EditSongView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,15 +188,17 @@
 			files = (
 				AF5A616628D55DB500864239 /* SongDetailView.swift in Sources */,
 				AF5A616428D4DC4300864239 /* DataController.swift in Sources */,
+				AF70C5AF28D588710007F4F7 /* SetListsView.swift in Sources */,
 				AF00BD2628CD10B0001A8D01 /* PracticeEditableListSundell.swift in Sources */,
 				AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */,
-				FF79C93B28CEEB200023AF8D /* EditSongView.swift in Sources */,
 				AF00BD1028CA7937001A8D01 /* ContentView.swift in Sources */,
-				AF00BD2228CBFE38001A8D01 /* AddSongView.swift in Sources */,
+				AF00BD2228CBFE38001A8D01 /* AddEditSongView.swift in Sources */,
 				AF00BD1E28CA7970001A8D01 /* QuickReferenceView.swift in Sources */,
 				AF00BD0E28CA7937001A8D01 /* TuneListApp.swift in Sources */,
 				FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */,
+				AF17909E28E1FB41002ECB29 /* Keys.swift in Sources */,
 				AF00BD2028CB9EC9001A8D01 /* SongTitleView.swift in Sources */,
+				AF5A616828D576D500864239 /* SongTitleIndexView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

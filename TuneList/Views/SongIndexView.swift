@@ -14,18 +14,20 @@ struct SongIndexView: View {
     ]) var songs: FetchedResults<Song>
     
     @State private var showingAddSong = false
+    @State private var showingDetailView = false
+    @State private var selectedSong: Song?
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(songs) { song in
-                    Text("\(song.title ?? "Unknown Song")")
+                    SongTitleIndexView(song: song)
                 }
                 .onDelete(perform: deleteSongs)
             }
-            
             .sheet(isPresented: $showingAddSong) {
-                AddSongView()
+                AddEditSongView(song: selectedSong)
+//                Text("Temporary Placeholder")
             }
         }
         .navigationTitle("Song Index")

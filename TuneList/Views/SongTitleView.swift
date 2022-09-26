@@ -10,8 +10,12 @@ import SwiftUI
 struct SongTitleView: View {
     let song: Song
     
-    @State private var isShowingEditSongView = false
     @State private var isShowingSongDetailView = false
+    @State private var isShowingAddEditSongView = false
+    
+    init(song: Song) {
+        self.song = song
+    }
     
     var body: some View {
         HStack {
@@ -34,12 +38,15 @@ struct SongTitleView: View {
                 }
                 
                 Button("Edit Song Info") {
-                    openEditSongView()
+                    showAddEditSongView()
                 }
                 
                 Button("Play Song") {
                     playSong()
                 }
+                
+                Button("Add to Setlist") { }
+                
             } label: {
                 ZStack {
                     Circle()
@@ -48,16 +55,14 @@ struct SongTitleView: View {
                     
                     Image(systemName: "ellipsis")
                         .font(.headline)
-                    
-
                 }
             }
             .sheet(isPresented: $isShowingSongDetailView) {
                 SongDetailView(song: song)
             }
-//            .sheet(isPresented: $isShowingEditSongView) {
-//                EditSongView(songs: Songs())
-//            }
+            .sheet(isPresented: $isShowingAddEditSongView) {
+                AddEditSongView(song: song)
+            }
         }
         .padding()
     }
@@ -71,9 +76,8 @@ struct SongTitleView: View {
         isShowingSongDetailView = true
     }
     
-    func openEditSongView() {
-        isShowingEditSongView = true
-        print("Song Info Editor")
+    func showAddEditSongView() {
+        isShowingAddEditSongView = true
     }
     
 }
