@@ -38,14 +38,6 @@ struct ContentView: View {
                 }
                 .padding()
                 .font(.headline)
-                
-                Section {
-                    NavigationLink {
-                        TESTFilterCoreData()
-                    } label: {
-                        Text("Test Core Data")
-                    }
-                }
             }
         }
     }

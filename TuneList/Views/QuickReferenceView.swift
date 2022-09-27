@@ -28,9 +28,6 @@ struct QuickReferenceView: View {
                 }
                 .onDelete(perform: deleteSongs)
             }
-            .sheet(item: $selectedSong, content: { song in
-                AddEditSongView(song: selectedSong, isNewSong: true)
-            })
             .sheet(isPresented: $showingAddEditSong) {
                 AddEditSongView(song: selectedSong, isNewSong: true)
             }
@@ -50,18 +47,15 @@ struct QuickReferenceView: View {
     }
     
     func sortByTitle() {
-        // MARK: - Find out how to sort fetchrequest by title when user selects to sort by title.
-        
-//        do {
-//            let request = Song.fetchRequest() as NSFetchRequest<Song>
-//
-//            let sort = NSSortDescriptor(key: "title", ascending: true)
-//            request.sortDescriptors = [sort]
-//
-//            self.items = try context.fetch(request)
-//
-//            }
-//        }
+        // MARK: - Sort fetchrequest by title
+    }
+    
+    func sortByKey() {
+        // MARK: - Sort fetchrequest by key
+    }
+    
+    func sortByStyle() {
+        // MARK: - Sort fetchrequest by style
     }
     
     func deleteSongs(at offsets: IndexSet) {
@@ -70,7 +64,7 @@ struct QuickReferenceView: View {
             moc.delete(song)
         }
         
-        //        try? moc.save() // Commented out for testing purposes.
+        try? moc.save()
     }
 }
 

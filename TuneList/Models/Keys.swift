@@ -17,5 +17,6 @@ struct Keys {
     let minorKeys = [
                     "Ab minor", "A minor",
                     "Bb minor", "B minor", "C minor", "C# minor", "Db minor",
-                    "D minor", "Eb minor", "E minor", "F minor", "F# minor", "G minor"]
+                    "D minor", "Eb minor", "E minor", "F minor", "F# minor", "G minor"
+    ]
 }

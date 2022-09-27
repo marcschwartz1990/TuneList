@@ -9,13 +9,9 @@ import SwiftUI
 
 struct SongIndexView: View {
     @Environment(\.managedObjectContext) var moc
-//    @FetchRequest(sortDescriptors: [
-//        SortDescriptor(\.title)
-//    ]) var songs: FetchedResults<Song>
     
     @State private var showingAddSong = false
     @State private var selectedSong: Song?
-    
     @State private var searchText = ""
     
     var body: some View {
@@ -38,14 +34,6 @@ struct SongIndexView: View {
             }
         }
     }
-    
-//    func deleteSongs(at offsets: IndexSet) {
-//        for offset in offsets {
-//            let song = songs[offset]
-//            moc.delete(song)
-//        }
-        
-        //        try? moc.save() // Commented out for testing purposes.
 }
 
 struct SongIndexView_Previews: PreviewProvider {

@@ -99,8 +99,6 @@ struct AddEditSongView: View {
         }
         
         try? moc.save()
-        
-        // MARK: - This will update the song in coreData but it will not show up in the quick reference view until it is reloaded. I must need to send it back to the view
     }
 }
 
