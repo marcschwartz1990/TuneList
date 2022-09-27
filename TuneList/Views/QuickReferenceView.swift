@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - Add sorting functionality. User should be able to sort by Title, Key or Style
+
 struct QuickReferenceView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: [
@@ -16,6 +18,7 @@ struct QuickReferenceView: View {
     @State private var showingAddEditSong = false
     
     @State private var selectedSong: Song?
+    
     
     var body: some View {
         NavigationView {
@@ -44,6 +47,21 @@ struct QuickReferenceView: View {
                 }
             }
         }
+    }
+    
+    func sortByTitle() {
+        // MARK: - Find out how to sort fetchrequest by title when user selects to sort by title.
+        
+//        do {
+//            let request = Song.fetchRequest() as NSFetchRequest<Song>
+//
+//            let sort = NSSortDescriptor(key: "title", ascending: true)
+//            request.sortDescriptors = [sort]
+//
+//            self.items = try context.fetch(request)
+//
+//            }
+//        }
     }
     
     func deleteSongs(at offsets: IndexSet) {
