@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SongTitleView: View {
-    let song: Song
+    @ObservedObject var song: Song
     
     @State private var isShowingSongDetailView = false
     @State private var isShowingAddEditSongView = false

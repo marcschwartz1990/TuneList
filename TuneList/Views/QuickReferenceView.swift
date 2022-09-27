@@ -31,7 +31,7 @@ struct QuickReferenceView: View {
             .sheet(item: $selectedSong, content: { song in
                 AddEditSongView(song: selectedSong, isNewSong: true)
             })
-            .sheet(isPresented: $showingAddEditSong, onDismiss: {selectedSong = nil}) {
+            .sheet(isPresented: $showingAddEditSong) {
                 AddEditSongView(song: selectedSong, isNewSong: true)
             }
         }
