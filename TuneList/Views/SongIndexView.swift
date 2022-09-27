@@ -23,7 +23,7 @@ struct SongIndexView: View {
             SongIndexFilteredList(filter: searchText)
         }
         .sheet(isPresented: $showingAddSong) {
-            AddEditSongView(song: selectedSong)
+            AddEditSongView(song: selectedSong, isNewSong: true)
         }
         .searchable(text: $searchText)
         .navigationTitle("Song Index")

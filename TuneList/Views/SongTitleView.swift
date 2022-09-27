@@ -61,7 +61,7 @@ struct SongTitleView: View {
                 SongDetailView(song: song)
             }
             .sheet(isPresented: $isShowingAddEditSongView) {
-                AddEditSongView(song: song)
+                AddEditSongView(song: song, isNewSong: false)
             }
         }
         .padding()

@@ -29,10 +29,10 @@ struct QuickReferenceView: View {
                 .onDelete(perform: deleteSongs)
             }
             .sheet(item: $selectedSong, content: { song in
-                AddEditSongView(song: selectedSong)
+                AddEditSongView(song: selectedSong, isNewSong: true)
             })
             .sheet(isPresented: $showingAddEditSong, onDismiss: {selectedSong = nil}) {
-                AddEditSongView(song: selectedSong)
+                AddEditSongView(song: selectedSong, isNewSong: true)
             }
         }
         .navigationTitle("Quick Reference")

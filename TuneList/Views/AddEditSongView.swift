@@ -18,9 +18,11 @@ struct AddEditSongView: View {
     let navTitle: String
     let song: Song?
     let keys = Keys()
+    let isNewSong: Bool
     
-    init(song: Song?) {
+    init(song: Song?, isNewSong: Bool) {
         self.song = song
+        self.isNewSong = isNewSong
         self.navTitle = (song != nil) == true ? "Edit Song" : "Add New Song"
     }
     
@@ -73,19 +75,32 @@ struct AddEditSongView: View {
             .navigationTitle(navTitle)
             .toolbar {
                 Button("Save") {
-                    let newSong = Song(context: moc)
-                    newSong.id = UUID()
-                    newSong.title = title
-                    newSong.key = key
-                    newSong.style = style
-                    
-                    // MARK: - From edit view, I need this to update an existing song, not save a new one.
-//                    try? moc.mergeChanges(fromContextDidSave: <#T##Notification#>)
-                    try? moc.save()
+                    saveSong()
                     dismiss()
                 }
+                // MARK: - BUG If I go to add view, type something in title, delete it, dismiss sheet, nothing works on the view before.
+                
+                .disabled(title.isEmpty)
             }
         }
+    }
+    
+    func saveSong() {
+        if isNewSong {
+            let newSong = Song(context: moc)
+            newSong.id = UUID()
+            newSong.title = title
+            newSong.key = key
+            newSong.style = style
+        } else {
+            song?.title = title
+            song?.key = key
+            song?.style = style
+        }
+        
+        try? moc.save()
+        
+        // MARK: - This will update the song in coreData but it will not show up in the quick reference view until it is reloaded. I must need to send it back to the view
     }
 }
 

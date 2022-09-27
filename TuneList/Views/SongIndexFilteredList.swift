@@ -15,9 +15,9 @@ struct SongIndexFilteredList: View {
     
     init(filter: String) {
         if filter.isEmpty {
-            _fetchRequest = FetchRequest<Song>(sortDescriptors: [])
+            _fetchRequest = FetchRequest<Song>(sortDescriptors: [SortDescriptor(\.title)])
         } else {
-            _fetchRequest = FetchRequest<Song>(sortDescriptors: [], predicate: NSPredicate(format: "title CONTAINS[cd] %@", filter))
+            _fetchRequest = FetchRequest<Song>(sortDescriptors: [SortDescriptor(\.title)], predicate: NSPredicate(format: "title CONTAINS[cd] %@", filter))
         }
     }
     
@@ -28,6 +28,7 @@ struct SongIndexFilteredList: View {
             }
             .onDelete(perform: deleteSongs)
         }
+        .font(.subheadline)
     }
     
     func deleteSongs(at offsets: IndexSet) {
