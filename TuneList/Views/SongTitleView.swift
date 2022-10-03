@@ -22,6 +22,9 @@ struct SongTitleView: View {
             VStack(alignment: .leading) {
                 Text("**\(song.title ?? "Unknown Song")**")
                     .padding([.bottom, .trailing], 1)
+                
+                // MARK: - It seems that if one of the lines of text extends to more than a single line, when edit is pressed, there is a bug where the delete symbol on the left goes away automatically.
+                
                 HStack {
                     Text("**Key**: \(song.key ?? "Unknown Key")")
                     Text("|")
@@ -42,20 +45,15 @@ struct SongTitleView: View {
                 }
                 
                 Button("Play Song") {
+                    // Should play first song in play list from song detail view.
                     playSong()
                 }
                 
                 Button("Add to Setlist") { }
                 
             } label: {
-                ZStack {
-                    Circle()
-                        .frame(width: 28, height: 28)
-                        .foregroundColor(.gray.opacity(0.5))
-                    
                     Image(systemName: "ellipsis")
                         .font(.headline)
-                }
             }
             .sheet(isPresented: $isShowingSongDetailView) {
                 SongDetailView(song: song)

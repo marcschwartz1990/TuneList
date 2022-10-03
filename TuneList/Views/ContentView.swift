@@ -35,6 +35,12 @@ struct ContentView: View {
                     } label: {
                         Text("Set Lists")
                     }
+                    
+                    NavigationLink {
+                        SongLyricSearchView()
+                    } label: {
+                        Text("Song Lyrics")
+                    }
                 }
                 .padding()
                 .font(.headline)

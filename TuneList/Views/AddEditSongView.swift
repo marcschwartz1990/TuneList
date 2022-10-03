@@ -15,6 +15,9 @@ struct AddEditSongView: View {
     @State private var key: String = "C Major"
     @State private var style: String = ""
     
+    @State private var composer: String = ""
+    @State private var yearComposed: String = ""
+    
     let navTitle: String
     let song: Song?
     let keys = Keys()
@@ -35,6 +38,8 @@ struct AddEditSongView: View {
                             title = song?.title ?? ""
                             key = song?.key ?? "C Major"
                             style = song?.style ?? ""
+                            composer = song?.composer ?? ""
+                            yearComposed = song?.yearComposed ?? ""
                         }
                         
                     Picker("Key", selection: $key) {
@@ -62,10 +67,10 @@ struct AddEditSongView: View {
                 }
                 
                 Section {
+                    TextField("Composer", text: $composer)
+                    TextField("Date Composed", text: $yearComposed)
                     Text("Placeholder: Lead Sheet Upload")
                     Text("Placeholder: Lyrics")
-                    Text("Placeholder: Composer")
-                    Text("Placeholder: Date Composed")
                     Text("ETC...")
                 } header: {
                     Text("More Info")
@@ -92,10 +97,14 @@ struct AddEditSongView: View {
             newSong.title = title
             newSong.key = key
             newSong.style = style
+            newSong.composer = composer
+            newSong.yearComposed = yearComposed
         } else {
             song?.title = title
             song?.key = key
             song?.style = style
+            song?.composer = composer
+            song?.yearComposed = yearComposed
         }
         
         try? moc.save()

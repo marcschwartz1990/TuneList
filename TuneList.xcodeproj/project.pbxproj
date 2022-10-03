@@ -23,6 +23,10 @@
 		AF5A616628D55DB500864239 /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616528D55DB500864239 /* SongDetailView.swift */; };
 		AF5A616828D576D500864239 /* SongTitleIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A616728D576D500864239 /* SongTitleIndexView.swift */; };
 		AF70C5AF28D588710007F4F7 /* SetListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF70C5AE28D588710007F4F7 /* SetListsView.swift */; };
+		AF81DC3A28E49617002611F4 /* SongLyricSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81DC3928E49617002611F4 /* SongLyricSearchView.swift */; };
+		AF81DC3C28E529F0002611F4 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81DC3B28E529F0002611F4 /* TrackInfo.swift */; };
+		AF81DC3E28E52B95002611F4 /* SongLyrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81DC3D28E52B95002611F4 /* SongLyrics.swift */; };
+		AF81DC4028E52DF0002611F4 /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81DC3F28E52DF0002611F4 /* LyricsView.swift */; };
 		FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93628CE5D740023AF8D /* SongIndexView.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +48,10 @@
 		AF5A616528D55DB500864239 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
 		AF5A616728D576D500864239 /* SongTitleIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTitleIndexView.swift; sourceTree = "<group>"; };
 		AF70C5AE28D588710007F4F7 /* SetListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListsView.swift; sourceTree = "<group>"; };
+		AF81DC3928E49617002611F4 /* SongLyricSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLyricSearchView.swift; sourceTree = "<group>"; };
+		AF81DC3B28E529F0002611F4 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
+		AF81DC3D28E52B95002611F4 /* SongLyrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLyrics.swift; sourceTree = "<group>"; };
+		AF81DC3F28E52DF0002611F4 /* LyricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
 		FF79C93628CE5D740023AF8D /* SongIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongIndexView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +109,8 @@
 				AF1790A228E223E5002ECB29 /* Song+CoreDataProperties.swift */,
 				AF5A616028D4DBE100864239 /* TuneList.xcdatamodeld */,
 				AF5A616328D4DC4300864239 /* DataController.swift */,
+				AF81DC3B28E529F0002611F4 /* TrackInfo.swift */,
+				AF81DC3D28E52B95002611F4 /* SongLyrics.swift */,
 				AF17909D28E1FB41002ECB29 /* Keys.swift */,
 			);
 			path = Models;
@@ -118,8 +128,18 @@
 				AF70C5AE28D588710007F4F7 /* SetListsView.swift */,
 				AF5A616728D576D500864239 /* SongTitleIndexView.swift */,
 				AF5A616528D55DB500864239 /* SongDetailView.swift */,
+				AF475B8028E62E370075252E /* Fetch Lyrics */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AF475B8028E62E370075252E /* Fetch Lyrics */ = {
+			isa = PBXGroup;
+			children = (
+				AF81DC3928E49617002611F4 /* SongLyricSearchView.swift */,
+				AF81DC3F28E52DF0002611F4 /* LyricsView.swift */,
+			);
+			path = "Fetch Lyrics";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,14 +212,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF81DC3C28E529F0002611F4 /* TrackInfo.swift in Sources */,
 				AF1790A828E22BC5002ECB29 /* SongIndexFilteredList.swift in Sources */,
 				AF5A616628D55DB500864239 /* SongDetailView.swift in Sources */,
 				AF5A616428D4DC4300864239 /* DataController.swift in Sources */,
 				AF70C5AF28D588710007F4F7 /* SetListsView.swift in Sources */,
 				AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */,
 				AF00BD1028CA7937001A8D01 /* ContentView.swift in Sources */,
+				AF81DC4028E52DF0002611F4 /* LyricsView.swift in Sources */,
+				AF81DC3A28E49617002611F4 /* SongLyricSearchView.swift in Sources */,
 				AF00BD2228CBFE38001A8D01 /* AddEditSongView.swift in Sources */,
 				AF00BD1E28CA7970001A8D01 /* QuickReferenceView.swift in Sources */,
+				AF81DC3E28E52B95002611F4 /* SongLyrics.swift in Sources */,
 				AF00BD0E28CA7937001A8D01 /* TuneListApp.swift in Sources */,
 				FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */,
 				AF1790A428E223E5002ECB29 /* Song+CoreDataProperties.swift in Sources */,
