@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.title)
-    ]) var songs: FetchedResults<Song>
+//    @Environment(\.managedObjectContext) var moc
+//    @FetchRequest(sortDescriptors: [
+//        SortDescriptor(\.title)
+//    ]) var songs: FetchedResults<Song>
     
     var body: some View {
         
