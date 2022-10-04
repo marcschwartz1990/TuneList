@@ -29,7 +29,7 @@ struct SongIndexView: View {
                 Button {
                     showingAddSong = true
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "plus.circle")
                 }
             }
         }

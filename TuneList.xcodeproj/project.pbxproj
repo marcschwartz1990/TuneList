@@ -29,6 +29,8 @@
 		AF81DC3C28E529F0002611F4 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81DC3B28E529F0002611F4 /* TrackInfo.swift */; };
 		AF81DC3E28E52B95002611F4 /* SongLyrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81DC3D28E52B95002611F4 /* SongLyrics.swift */; };
 		AF81DC4028E52DF0002611F4 /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81DC3F28E52DF0002611F4 /* LyricsView.swift */; };
+		AFB5A76B28EC803800E2F186 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A76A28EC803800E2F186 /* ImagePicker.swift */; };
+		AFB5A76D28EC808700E2F186 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A76C28EC808700E2F186 /* ImageSaver.swift */; };
 		FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93628CE5D740023AF8D /* SongIndexView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +58,8 @@
 		AF81DC3B28E529F0002611F4 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
 		AF81DC3D28E52B95002611F4 /* SongLyrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLyrics.swift; sourceTree = "<group>"; };
 		AF81DC3F28E52DF0002611F4 /* LyricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
+		AFB5A76A28EC803800E2F186 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		AFB5A76C28EC808700E2F186 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		FF79C93628CE5D740023AF8D /* SongIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongIndexView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +121,8 @@
 				AF81DC3D28E52B95002611F4 /* SongLyrics.swift */,
 				AF17909D28E1FB41002ECB29 /* Keys.swift */,
 				AF3D677528EBBF0C00667552 /* SongSort.swift */,
+				AFB5A76A28EC803800E2F186 /* ImagePicker.swift */,
+				AFB5A76C28EC808700E2F186 /* ImageSaver.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -133,8 +139,8 @@
 				AF70C5AE28D588710007F4F7 /* SetListsView.swift */,
 				AF5A616728D576D500864239 /* SongTitleIndexView.swift */,
 				AF5A616528D55DB500864239 /* SongDetailView.swift */,
-				AF475B8028E62E370075252E /* Fetch Lyrics */,
 				AF3D677728EBC16900667552 /* SortSelectionView.swift */,
+				AF475B8028E62E370075252E /* Fetch Lyrics */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,10 +231,12 @@
 				AF70C5AF28D588710007F4F7 /* SetListsView.swift in Sources */,
 				AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */,
 				AF00BD1028CA7937001A8D01 /* ContentView.swift in Sources */,
+				AFB5A76B28EC803800E2F186 /* ImagePicker.swift in Sources */,
 				AF81DC4028E52DF0002611F4 /* LyricsView.swift in Sources */,
 				AF81DC3A28E49617002611F4 /* SongLyricSearchView.swift in Sources */,
 				AF00BD2228CBFE38001A8D01 /* AddEditSongView.swift in Sources */,
 				AF00BD1E28CA7970001A8D01 /* QuickReferenceView.swift in Sources */,
+				AFB5A76D28EC808700E2F186 /* ImageSaver.swift in Sources */,
 				AF81DC3E28E52B95002611F4 /* SongLyrics.swift in Sources */,
 				AF3D677628EBBF0C00667552 /* SongSort.swift in Sources */,
 				AF3D677828EBC16900667552 /* SortSelectionView.swift in Sources */,
@@ -370,6 +378,7 @@
 				DEVELOPMENT_TEAM = 8369TNNCWH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -399,6 +408,7 @@
 				DEVELOPMENT_TEAM = 8369TNNCWH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

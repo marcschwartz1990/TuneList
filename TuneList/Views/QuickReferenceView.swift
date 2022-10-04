@@ -49,7 +49,7 @@ struct QuickReferenceView: View {
                     Button {
                         showingAddEditSong = true
                     } label: {
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle")
                     }
                 }
             }

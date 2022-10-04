@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct SongDetailView: View {
+    @Environment(\.dismiss) var dismiss
+    
     let song: Song
     @State private var trackObject: TrackObject? = TrackObject(track: Track(commontrackID: -1, hasLyrics: -1, trackName: "Sample", albumName: "Sample", artistName: "Sample"))
     
+    // Image
+    @State private var image: Image?
+    @State private var inputImage: UIImage?
+    @State private var showingImagePicker = false
+    @State private var isFullScreen = false
+    
+    
+    // Lyrics
     @State private var showLyricSearch = false
     @State private var hasLyrics = false
     
@@ -68,6 +78,23 @@ struct SongDetailView: View {
             
             Divider()
             
+            // Image picker goes here
+            Button("Add Lead Sheet") {
+                showingImagePicker = true
+            }
+            
+            // MARK: - Need to be able to save image to Song Object when selected and replace when changed.
+            // MARK: - Need option to use camera
+            
+            image?
+                .resizable()
+                .scaledToFit()
+                .onTapGesture {
+                    isFullScreen = true
+                }
+            
+            Divider()
+            
             Button("Find Lyrics") {
                 showLyricSearch = true
             }
@@ -76,6 +103,10 @@ struct SongDetailView: View {
             Text(song.wrappedLyrics)
         }
         .padding()
+        .onChange(of: inputImage) { _ in loadImage() }
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker(image: $inputImage)
+        }
         .sheet(isPresented: $showLyricSearch) {
             if hasLyrics {
                 LyricsView(song: trackObject)
@@ -83,7 +114,36 @@ struct SongDetailView: View {
                 SongLyricSearchView()
             }
         }
+        .fullScreenCover(isPresented: $isFullScreen, onDismiss: setFullScreenToFalse) {
+            NavigationView {
+                VStack {
+                    HStack{
+                        Spacer()
+                        Button("Done") {
+                            dismiss()
+                            // MARK: - If picture is reloaded again, done button does not dismiss.
+                        }
+                        .font(.headline)
+                        .padding(.trailing)
+                    }
+                    
+                    image?
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
+        }
     }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
+    
+    func setFullScreenToFalse() {
+        isFullScreen = false
+    }
+    
 }
 
 //struct SongDetailView_Previews: PreviewProvider {
