@@ -31,6 +31,7 @@
 		AF81DC4028E52DF0002611F4 /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81DC3F28E52DF0002611F4 /* LyricsView.swift */; };
 		AFB5A76B28EC803800E2F186 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A76A28EC803800E2F186 /* ImagePicker.swift */; };
 		AFB5A76D28EC808700E2F186 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A76C28EC808700E2F186 /* ImageSaver.swift */; };
+		AFB5A78B28EE528200E2F186 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A78A28EE528200E2F186 /* CoreDataManager.swift */; };
 		FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93628CE5D740023AF8D /* SongIndexView.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		AF81DC3F28E52DF0002611F4 /* LyricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
 		AFB5A76A28EC803800E2F186 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		AFB5A76C28EC808700E2F186 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		AFB5A78A28EE528200E2F186 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FF79C93628CE5D740023AF8D /* SongIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongIndexView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 				AF81DC3B28E529F0002611F4 /* TrackInfo.swift */,
 				AF81DC3D28E52B95002611F4 /* SongLyrics.swift */,
 				AF17909D28E1FB41002ECB29 /* Keys.swift */,
+				AFB5A78A28EE528200E2F186 /* CoreDataManager.swift */,
 				AF3D677528EBBF0C00667552 /* SongSort.swift */,
 				AFB5A76A28EC803800E2F186 /* ImagePicker.swift */,
 				AFB5A76C28EC808700E2F186 /* ImageSaver.swift */,
@@ -230,6 +233,7 @@
 				AF5A616428D4DC4300864239 /* DataController.swift in Sources */,
 				AF70C5AF28D588710007F4F7 /* SetListsView.swift in Sources */,
 				AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */,
+				AFB5A78B28EE528200E2F186 /* CoreDataManager.swift in Sources */,
 				AF00BD1028CA7937001A8D01 /* ContentView.swift in Sources */,
 				AFB5A76B28EC803800E2F186 /* ImagePicker.swift in Sources */,
 				AF81DC4028E52DF0002611F4 /* LyricsView.swift in Sources */,

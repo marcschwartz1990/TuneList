@@ -17,6 +17,14 @@ struct AddEditSongView: View {
     
     @State private var composer: String = ""
     @State private var yearComposed: String = ""
+    @State private var leadSheet: Data?
+    
+    // Images
+    @State private var image: Image?
+    @State private var inputImage: UIImage?
+    @State private var showingImagePicker = false
+    @State private var isFullScreen = false
+    
     
     let navTitle: String
     let song: Song?
@@ -40,6 +48,7 @@ struct AddEditSongView: View {
                             style = song?.style ?? ""
                             composer = song?.composer ?? ""
                             yearComposed = song?.yearComposed ?? ""
+                            leadSheet = song?.leadSheet
                         }
                         
                     Picker("Key", selection: $key) {
@@ -69,6 +78,23 @@ struct AddEditSongView: View {
                 Section {
                     TextField("Composer", text: $composer)
                     TextField("Date Composed", text: $yearComposed)
+                    
+                    // Image picker goes here
+                    Button("Select Lead Sheet") {
+                        showingImagePicker = true
+                    }
+                    
+                    // MARK: - Need to be able to save image to Song Object when selected and replace when changed.
+                    // MARK: - Need option to use camera
+                    
+                    image?
+                        .resizable()
+                        .scaledToFit()
+                        .onTapGesture {
+                            isFullScreen = true
+                        }
+                    
+                    
                     Text("Placeholder: Lead Sheet Upload")
                     Text("Placeholder: Lyrics")
                     Text("ETC...")
@@ -76,6 +102,10 @@ struct AddEditSongView: View {
                     Text("More Info")
                 }
                 
+            }
+            .onChange(of: inputImage) { _ in loadImage() }
+            .sheet(isPresented: $showingImagePicker) {
+                ImagePicker(image: $inputImage)
             }
             .navigationTitle(navTitle)
             .toolbar {
@@ -88,6 +118,34 @@ struct AddEditSongView: View {
                 .disabled(title.isEmpty)
             }
         }
+        .fullScreenCover(isPresented: $isFullScreen, onDismiss: setFullScreenToFalse) {
+            NavigationView {
+                VStack {
+                    HStack{
+                        Spacer()
+                        Button("Done") {
+                            dismiss()
+                            // MARK: - If picture is reloaded again, done button does not dismiss.
+                        }
+                        .font(.headline)
+                        .padding(.trailing)
+                    }
+                    
+                    image?
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
+        }
+    }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
+    
+    func setFullScreenToFalse() {
+        isFullScreen = false
     }
     
     func saveSong() {
@@ -99,12 +157,17 @@ struct AddEditSongView: View {
             newSong.style = style
             newSong.composer = composer
             newSong.yearComposed = yearComposed
+            
+            // Save Image (Core Data Binary Data Type)
+            newSong.leadSheet = inputImage?.jpegData(compressionQuality: 1.0)
+            
         } else {
             song?.title = title
             song?.key = key
             song?.style = style
             song?.composer = composer
             song?.yearComposed = yearComposed
+            song?.leadSheet = leadSheet
         }
         
         try? moc.save()

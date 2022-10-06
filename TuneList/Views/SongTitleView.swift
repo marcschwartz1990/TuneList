@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SongTitleView: View {
+    // MARK: - Find out why this song is an ObservedObject.
     @ObservedObject var song: Song
     
     @State private var isShowingSongDetailView = false
@@ -19,42 +20,11 @@ struct SongTitleView: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                Text("**\(song.title ?? "Unknown Song")**")
-                    .padding([.bottom, .trailing], 1)
-                
-                // MARK: - It seems that if one of the lines of text extends to more than a single line, when edit is pressed, there is a bug where the delete symbol on the left goes away automatically.
-                
-                HStack {
-                    Text("**Key**: \(song.key ?? "Unknown Key")")
-                    Text("|")
-                    Text("**Style**: \(song.style ?? "Unknown Style")")
-                }
-                .font(.caption)
-            }
+            SongDataView()
             
             Spacer()
             
-            Menu {
-                Button("Song Details") {
-                    showSongDetailView()
-                }
-                
-                Button("Edit Song Info") {
-                    showAddEditSongView()
-                }
-                
-                Button("Play Song") {
-                    // Should play first song in play list from song detail view.
-                    playSong()
-                }
-                
-                Button("Add to Setlist") { }
-                
-            } label: {
-                    Image(systemName: "ellipsis")
-                        .font(.headline)
-            }
+            SongMenuView()
             .sheet(isPresented: $isShowingSongDetailView) {
                 SongDetailView(song: song)
             }
@@ -64,10 +34,35 @@ struct SongTitleView: View {
         }
         .padding()
     }
-        
     
-    func playSong() {
-        print("Song being played")
+    @ViewBuilder
+    func SongDataView() -> some View {
+        VStack(alignment: .leading) {
+            Text("**\(song.wrappedTitle)**")
+                .padding([.bottom, .trailing], 1)
+            HStack {
+                Text("**Key**: \(song.wrappedKey)")
+                Text("|")
+                Text("**Style**: \(song.wrappedStyle)")
+            }
+            .font(.caption)
+        }
+    }
+    
+    @ViewBuilder
+    func SongMenuView() -> some View {
+        Menu {
+            Button("Song Details") {
+                showSongDetailView()
+            }
+            
+            Button("Edit Song Info") {
+                showAddEditSongView()
+            }
+        } label: {
+                Image(systemName: "ellipsis")
+                    .font(.headline)
+        }
     }
     
     func showSongDetailView() {
@@ -79,3 +74,13 @@ struct SongTitleView: View {
     }
     
 }
+
+// MARK: - Fix this preview
+
+//struct SongTitleView_Previews: PreviewProvider {
+//    static var song = Song()
+//
+//    static var previews: some View {
+//        SongTitleView()
+//    }
+//}

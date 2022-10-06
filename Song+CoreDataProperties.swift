@@ -23,6 +23,7 @@ extension Song {
     @NSManaged public var lyrics: String?
     @NSManaged public var composer: String?
     @NSManaged public var yearComposed: String?
+    @NSManaged public var leadSheet: Data?
     
     var wrappedKey: String {
         key ?? "Key Unknown"
@@ -46,6 +47,10 @@ extension Song {
     
     var wrappedLyrics: String {
         lyrics ?? "No Lyrics"
+    }
+    
+    var wrappedLeadSheet: Data {
+        leadSheet ?? Data()
     }
 
 }

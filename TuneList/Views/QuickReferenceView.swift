@@ -7,14 +7,13 @@
 
 import SwiftUI
 
-
-
-// MARK: - Add sorting functionality. User should be able to sort by Title, Key or Style
-
-
+// MARK: - If there are no songs, create a cover page that says how to create a song
+// MARK: - Sorting before there are songs crashes the app. Disable button until there is a song with valid key and style. Style can be blank but need to return SOMETHING.
 
 struct QuickReferenceView: View {
+    // This code is giving us the ability to manipulate the data in the environment from managedObjectContext.
     @Environment(\.managedObjectContext) var moc
+    //@FetchRequest is not loading directly from storage, it looks in the environment and finds data in the managedObjectContext that was injected in TuneListApp
     @FetchRequest(
         sortDescriptors: SongSort.default.descriptors,
         animation: .default)

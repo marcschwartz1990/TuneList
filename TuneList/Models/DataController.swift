@@ -9,6 +9,9 @@ import CoreData
 import Foundation
 
 class DataController: ObservableObject {
+    
+    // NSPersistentContainer is responsible for loading data from CoreData and giving us access to data inside.
+    // name parameter must match the database file name.
     let container = NSPersistentContainer(name: "TuneList")
     
     init() {

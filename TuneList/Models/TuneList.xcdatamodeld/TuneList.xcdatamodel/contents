@@ -5,6 +5,7 @@
         <attribute name="composer" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="key" optional="YES" attributeType="String"/>
+        <attribute name="leadSheet" optional="YES" attributeType="Binary"/>
         <attribute name="lyrics" optional="YES" attributeType="String"/>
         <attribute name="style" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
