@@ -5,6 +5,9 @@
 //  Created by Marc-Developer on 9/9/22.
 //
 
+// Textfield needs to bind to an @State property. @State properties cannot be initialized in init() -- error: Variable 'self.title' used before being initialized --.
+
+
 import SwiftUI
 
 struct AddEditSongView: View {
@@ -17,14 +20,13 @@ struct AddEditSongView: View {
     
     @State private var composer: String = ""
     @State private var yearComposed: String = ""
-    @State private var leadSheet: Data?
-    
-    // Images
-    @State private var image: Image?
-    @State private var inputImage: UIImage?
-    @State private var showingImagePicker = false
-    @State private var isFullScreen = false
-    
+//    @State private var leadSheet: Data?
+//
+//    // Images
+//    @State private var image: Image?
+//    @State private var inputImage: UIImage?
+//    @State private var showingImagePicker = false
+//    @State private var isFullScreen = false
     
     let navTitle: String
     let song: Song?
@@ -41,33 +43,10 @@ struct AddEditSongView: View {
         NavigationView {
             Form {
                 Section {
+                    
                     TextField("Song Title", text: $title)
-                        .onAppear {
-                            title = song?.title ?? ""
-                            key = song?.key ?? "C Major"
-                            style = song?.style ?? ""
-                            composer = song?.composer ?? ""
-                            yearComposed = song?.yearComposed ?? ""
-                            leadSheet = song?.leadSheet
-                        }
-                        
-                    Picker("Key", selection: $key) {
-                            Section {
-                                ForEach(keys.majorKeys, id: \.self) {
-                                    Text($0)
-                                }
-                            } header: {
-                                Text("Major keys")
-                            }
-                            
-                            Section {
-                                ForEach(keys.minorKeys, id: \.self) {
-                                    Text($0)
-                                }
-                            } header: {
-                                Text("minor keys")
-                            }
-                    }
+                    
+                    KeyPicker()
 
                     TextField("Style", text: $style)
                     
@@ -80,33 +59,37 @@ struct AddEditSongView: View {
                     TextField("Date Composed", text: $yearComposed)
                     
                     // Image picker goes here
-                    Button("Select Lead Sheet") {
-                        showingImagePicker = true
-                    }
+//                    Button("Select Lead Sheet") {
+//                        showingImagePicker = true
+//                    }
                     
                     // MARK: - Need to be able to save image to Song Object when selected and replace when changed.
                     // MARK: - Need option to use camera
                     
-                    image?
-                        .resizable()
-                        .scaledToFit()
-                        .onTapGesture {
-                            isFullScreen = true
-                        }
+//                    image?
+//                        .resizable()
+//                        .scaledToFit()
+//                        .onTapGesture {
+//                            isFullScreen = true
+//                        }
                     
-                    
-                    Text("Placeholder: Lead Sheet Upload")
-                    Text("Placeholder: Lyrics")
-                    Text("ETC...")
                 } header: {
                     Text("More Info")
                 }
                 
             }
-            .onChange(of: inputImage) { _ in loadImage() }
-            .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(image: $inputImage)
+            .onAppear {
+                title = song?.title ?? ""
+                key = song?.key ?? "C Major"
+                style = song?.style ?? ""
+                composer = song?.composer ?? ""
+                yearComposed = song?.yearComposed ?? ""
+//                            leadSheet = song?.leadSheet
             }
+//            .onChange(of: inputImage) { _ in loadImage() }
+//            .sheet(isPresented: $showingImagePicker) {
+//                ImagePicker(image: $inputImage)
+//            }
             .navigationTitle(navTitle)
             .toolbar {
                 Button("Save") {
@@ -115,38 +98,66 @@ struct AddEditSongView: View {
                 }
                 // MARK: - BUG If I go to add view, type something in title, delete it, dismiss sheet, nothing works on the view before.
                 
-                .disabled(title.isEmpty)
+                .disabled(saveButtonDisabled())
             }
         }
-        .fullScreenCover(isPresented: $isFullScreen, onDismiss: setFullScreenToFalse) {
-            NavigationView {
-                VStack {
-                    HStack{
-                        Spacer()
-                        Button("Done") {
-                            dismiss()
-                            // MARK: - If picture is reloaded again, done button does not dismiss.
-                        }
-                        .font(.headline)
-                        .padding(.trailing)
-                    }
-                    
-                    image?
-                        .resizable()
-                        .scaledToFit()
+//        .fullScreenCover(isPresented: $isFullScreen, onDismiss: setFullScreenToFalse) {
+//            NavigationView {
+//                VStack {
+//                    HStack{
+//                        Spacer()
+//                        Button("Done") {
+//                            dismiss()
+//                            // MARK: - If picture is reloaded again, done button does not dismiss.
+//                        }
+//                        .font(.headline)
+//                        .padding(.trailing)
+//                    }
+//
+//                    image?
+//                        .resizable()
+//                        .scaledToFit()
+//                }
+//            }
+//        }
+    }
+    
+//    func loadImage() {
+//        guard let inputImage = inputImage else { return }
+//        image = Image(uiImage: inputImage)
+//    }
+    
+//    func setFullScreenToFalse() {
+//        isFullScreen = false
+//    }
+    
+    @ViewBuilder
+    func KeyPicker() -> some View {
+        Picker("Key", selection: $key) {
+            Section {
+                ForEach(keys.majorKeys, id: \.self) {
+                    Text($0)
                 }
+            } header: {
+                Text("Major keys")
+            }
+            
+            Section {
+                ForEach(keys.minorKeys, id: \.self) {
+                    Text($0)
+                }
+            } header: {
+                Text("minor keys")
             }
         }
     }
     
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
-    }
-    
-    func setFullScreenToFalse() {
-        isFullScreen = false
-    }
+    func saveButtonDisabled() -> Bool {
+        if title.isEmpty || style.isEmpty {
+            return true
+        }
+        return false
+        }
     
     func saveSong() {
         if isNewSong {
@@ -159,7 +170,7 @@ struct AddEditSongView: View {
             newSong.yearComposed = yearComposed
             
             // Save Image (Core Data Binary Data Type)
-            newSong.leadSheet = inputImage?.jpegData(compressionQuality: 1.0)
+//            newSong.leadSheet = inputImage?.jpegData(compressionQuality: 1.0)
             
         } else {
             song?.title = title
@@ -167,10 +178,12 @@ struct AddEditSongView: View {
             song?.style = style
             song?.composer = composer
             song?.yearComposed = yearComposed
-            song?.leadSheet = leadSheet
+//            song?.leadSheet = leadSheet
         }
         
-        try? moc.save()
+        if moc.hasChanges {
+            try? moc.save()
+        }
     }
 }
 

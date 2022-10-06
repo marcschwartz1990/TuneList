@@ -25,7 +25,6 @@ struct SongIndexView: View {
         .navigationTitle("Song Index")
         .toolbar {
             HStack {
-                EditButton()
                 Button {
                     showingAddSong = true
                 } label: {

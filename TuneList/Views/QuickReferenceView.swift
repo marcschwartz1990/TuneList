@@ -36,27 +36,27 @@ struct QuickReferenceView: View {
                     .onDelete(perform: deleteSongs)
                 }
             }
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    SortSelectionView(
-                        selectedSortItem: $selectedSort,
-                        sorts: SongSort.sorts)
-                    .onChange(of: selectedSort) { _ in
-                        songs.sortDescriptors = selectedSort.descriptors
-                    }
-                    
-                    Button {
-                        showingAddEditSong = true
-                    } label: {
-                        Image(systemName: "plus.circle")
-                    }
-                }
-            }
+            .navigationTitle("Quick Reference")
             .sheet(isPresented: $showingAddEditSong) {
                 AddEditSongView(song: selectedSong, isNewSong: true)
             }
         }
-        .navigationTitle("Quick Reference")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                SortSelectionView(
+                    selectedSortItem: $selectedSort,
+                    sorts: SongSort.sorts)
+                .onChange(of: selectedSort) { _ in
+                    songs.sortDescriptors = selectedSort.descriptors
+                }
+                
+                Button {
+                    showingAddEditSong = true
+                } label: {
+                    Image(systemName: "plus.circle")
+                }
+            }
+        }
     }
     
     func deleteSongs(at offsets: IndexSet) {

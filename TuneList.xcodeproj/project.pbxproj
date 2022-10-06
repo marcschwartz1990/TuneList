@@ -134,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				AF00BD0F28CA7937001A8D01 /* ContentView.swift */,
-				AF00BD2128CBFE38001A8D01 /* AddEditSongView.swift */,
 				AF00BD1D28CA7970001A8D01 /* QuickReferenceView.swift */,
+				AF00BD2128CBFE38001A8D01 /* AddEditSongView.swift */,
 				AF00BD1F28CB9EC9001A8D01 /* SongTitleView.swift */,
 				FF79C93628CE5D740023AF8D /* SongIndexView.swift */,
 				AF1790A728E22BC5002ECB29 /* SongIndexFilteredList.swift */,
