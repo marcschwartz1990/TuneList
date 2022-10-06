@@ -77,10 +77,21 @@ struct SongTitleView: View {
 
 // MARK: - Fix this preview
 
-//struct SongTitleView_Previews: PreviewProvider {
-//    static var song = Song()
-//
-//    static var previews: some View {
-//        SongTitleView()
-//    }
-//}
+struct SongTitleView_Previews: PreviewProvider {
+    static let dataController = DataController()
+    static var song: Song = {
+        let context = dataController.container.viewContext
+        let song = Song(context: context)
+        song.key = "C Major"
+        song.style = "Up Tempo"
+        song.title = "Little Rock Getaway"
+        return song
+    }()
+    
+
+    static var previews: some View {
+        SongTitleView(song: song)
+            .environment(\.managedObjectContext, dataController.container.viewContext)
+
+    }
+}

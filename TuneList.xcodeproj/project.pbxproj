@@ -32,6 +32,9 @@
 		AFB5A76B28EC803800E2F186 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A76A28EC803800E2F186 /* ImagePicker.swift */; };
 		AFB5A76D28EC808700E2F186 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A76C28EC808700E2F186 /* ImageSaver.swift */; };
 		AFB5A78B28EE528200E2F186 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A78A28EE528200E2F186 /* CoreDataManager.swift */; };
+		AFB5A78D28EF43C400E2F186 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A78C28EF43C400E2F186 /* AddEntryView.swift */; };
+		AFB5A78F28EF463F00E2F186 /* SongEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A78E28EF463F00E2F186 /* SongEntry.swift */; };
+		AFB5A79128EF474800E2F186 /* SongEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5A79028EF474800E2F186 /* SongEntries.swift */; };
 		FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79C93628CE5D740023AF8D /* SongIndexView.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +65,9 @@
 		AFB5A76A28EC803800E2F186 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		AFB5A76C28EC808700E2F186 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		AFB5A78A28EE528200E2F186 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		AFB5A78C28EF43C400E2F186 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
+		AFB5A78E28EF463F00E2F186 /* SongEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEntry.swift; sourceTree = "<group>"; };
+		AFB5A79028EF474800E2F186 /* SongEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEntries.swift; sourceTree = "<group>"; };
 		FF79C93628CE5D740023AF8D /* SongIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongIndexView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +131,8 @@
 				AFB5A78A28EE528200E2F186 /* CoreDataManager.swift */,
 				AF3D677528EBBF0C00667552 /* SongSort.swift */,
 				AFB5A76A28EC803800E2F186 /* ImagePicker.swift */,
+				AFB5A78E28EF463F00E2F186 /* SongEntry.swift */,
+				AFB5A79028EF474800E2F186 /* SongEntries.swift */,
 				AFB5A76C28EC808700E2F186 /* ImageSaver.swift */,
 			);
 			path = Models;
@@ -136,6 +144,7 @@
 				AF00BD0F28CA7937001A8D01 /* ContentView.swift */,
 				AF00BD1D28CA7970001A8D01 /* QuickReferenceView.swift */,
 				AF00BD2128CBFE38001A8D01 /* AddEditSongView.swift */,
+				AFB5A78C28EF43C400E2F186 /* AddEntryView.swift */,
 				AF00BD1F28CB9EC9001A8D01 /* SongTitleView.swift */,
 				FF79C93628CE5D740023AF8D /* SongIndexView.swift */,
 				AF1790A728E22BC5002ECB29 /* SongIndexFilteredList.swift */,
@@ -228,11 +237,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF81DC3C28E529F0002611F4 /* TrackInfo.swift in Sources */,
+				AFB5A78D28EF43C400E2F186 /* AddEntryView.swift in Sources */,
 				AF1790A828E22BC5002ECB29 /* SongIndexFilteredList.swift in Sources */,
 				AF5A616628D55DB500864239 /* SongDetailView.swift in Sources */,
 				AF5A616428D4DC4300864239 /* DataController.swift in Sources */,
 				AF70C5AF28D588710007F4F7 /* SetListsView.swift in Sources */,
 				AF5A616228D4DBE100864239 /* TuneList.xcdatamodeld in Sources */,
+				AFB5A78F28EF463F00E2F186 /* SongEntry.swift in Sources */,
 				AFB5A78B28EE528200E2F186 /* CoreDataManager.swift in Sources */,
 				AF00BD1028CA7937001A8D01 /* ContentView.swift in Sources */,
 				AFB5A76B28EC803800E2F186 /* ImagePicker.swift in Sources */,
@@ -245,6 +256,7 @@
 				AF3D677628EBBF0C00667552 /* SongSort.swift in Sources */,
 				AF3D677828EBC16900667552 /* SortSelectionView.swift in Sources */,
 				AF00BD0E28CA7937001A8D01 /* TuneListApp.swift in Sources */,
+				AFB5A79128EF474800E2F186 /* SongEntries.swift in Sources */,
 				FF79C93728CE5D740023AF8D /* SongIndexView.swift in Sources */,
 				AF1790A428E223E5002ECB29 /* Song+CoreDataProperties.swift in Sources */,
 				AF1790A328E223E5002ECB29 /* Song+CoreDataClass.swift in Sources */,
