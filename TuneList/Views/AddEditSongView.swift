@@ -51,7 +51,6 @@ struct AddEditSongView: View {
                     saveSong()
                     dismiss()
                 }
-                // MARK: - BUG If I go to add view, type something in title, delete it, dismiss sheet, nothing works on the view before.
                 
                 .disabled(saveButtonDisabled())
             }
@@ -98,9 +97,6 @@ struct AddEditSongView: View {
             Button("Add Entry") {
                 // AddEntryView()
             }
-            
-            // MARK: - Need to be able to save image to Song Object when selected and replace when changed.
-            // MARK: - Need option to use camera
         } header: {
             Text("More Info")
         }
