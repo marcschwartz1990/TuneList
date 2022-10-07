@@ -20,9 +20,7 @@ struct QuickReferenceView: View {
     private var songs: FetchedResults<Song>
     
     @State private var selectedSort = SongSort.default
-    
     @State private var showingAddEditSong = false
-    
     @State private var selectedSong: Song?
     
     
@@ -37,7 +35,7 @@ struct QuickReferenceView: View {
                 }
             }
             .navigationTitle("Quick Reference")
-            .sheet(isPresented: $showingAddEditSong) {
+            .sheet(isPresented: $showingAddEditSong, onDismiss: didDismiss) {
                 AddEditSongView(song: selectedSong, isNewSong: true)
             }
         }
@@ -57,6 +55,10 @@ struct QuickReferenceView: View {
                 }
             }
         }
+    }
+    
+    func didDismiss() {
+        showingAddEditSong = false
     }
     
     func deleteSongs(at offsets: IndexSet) {

@@ -8,15 +8,10 @@
 import SwiftUI
 
 struct SongTitleView: View {
-    // MARK: - Find out why this song is an ObservedObject.
-    @ObservedObject var song: Song
+    let song: Song
     
     @State private var isShowingSongDetailView = false
     @State private var isShowingAddEditSongView = false
-    
-    init(song: Song) {
-        self.song = song
-    }
     
     var body: some View {
         HStack {
@@ -60,8 +55,8 @@ struct SongTitleView: View {
                 showAddEditSongView()
             }
         } label: {
-                Image(systemName: "ellipsis")
-                    .font(.headline)
+            Image(systemName: "ellipsis")
+                .font(.headline)
         }
     }
     
@@ -75,7 +70,7 @@ struct SongTitleView: View {
     
 }
 
-// MARK: - Fix this preview
+// MARK: - Can I make an example preview that works everywhere from song?
 
 struct SongTitleView_Previews: PreviewProvider {
     static let dataController = DataController()

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SongIndexView: View {
     @Environment(\.managedObjectContext) var moc
-    
-    @State private var showingAddSong = false
     @State private var selectedSong: Song?
     @State private var searchText = ""
     
@@ -18,20 +16,8 @@ struct SongIndexView: View {
         NavigationView {
             SongIndexFilteredList(filter: searchText)
         }
-        .sheet(isPresented: $showingAddSong) {
-            AddEditSongView(song: selectedSong, isNewSong: true)
-        }
         .searchable(text: $searchText)
         .navigationTitle("Song Index")
-        .toolbar {
-            HStack {
-                Button {
-                    showingAddSong = true
-                } label: {
-                    Image(systemName: "plus.circle")
-                }
-            }
-        }
     }
 }
 

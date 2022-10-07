@@ -20,71 +20,23 @@ struct AddEditSongView: View {
     
     @State private var composer: String = ""
     @State private var yearComposed: String = ""
-
-    // Images
-    @State private var image: Image?
-    @State private var inputImage: UIImage?
-    @State private var showingImagePicker = false
-    @State private var isFullScreen = false
     
     let navTitle: String
     let song: Song?
     let keys = Keys()
     let isNewSong: Bool
-    var leadSheet: Data?
     
     init(song: Song?, isNewSong: Bool) {
         self.song = song
         self.isNewSong = isNewSong
         self.navTitle = (song != nil) == true ? "Edit Song" : "Add New Song"
-        self.leadSheet = song?.leadSheet
     }
     
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    
-                    TextField("Song Title", text: $title)
-                    
-                    KeyPicker()
-
-                    TextField("Style", text: $style)
-                    
-                } header: {
-                    Text("Quick Reference Info")
-                }
-                
-                Section {
-                    TextField("Composer", text: $composer)
-                    TextField("Date Composed", text: $yearComposed)
-                    Button("Add Entry") {
-                        // AddEntryView()
-                    }
-                    
-                    // MARK: - Need to be able to save image to Song Object when selected and replace when changed.
-                    // MARK: - Need option to use camera
-                } header: {
-                    Text("More Info")
-                }
-                
-                Section {
-                    // Image picker goes here
-                    Button("Select Lead Sheet") {
-                        showingImagePicker = true
-                    }
-                    
-                    image?
-                        .resizable()
-                        .scaledToFit()
-                        .onTapGesture {
-                            isFullScreen = true
-                        }
-                    
-                } header: {
-                    Text("Lead Sheet")
-                }
-                
+                QuickReferenceSection()
+                MoreSongInfoSection()
             }
             .onAppear {
                 title = song?.title ?? ""
@@ -92,10 +44,6 @@ struct AddEditSongView: View {
                 style = song?.style ?? ""
                 composer = song?.composer ?? ""
                 yearComposed = song?.yearComposed ?? ""
-            }
-            .onChange(of: inputImage) { _ in loadImage() }
-            .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(image: $inputImage)
             }
             .navigationTitle(navTitle)
             .toolbar {
@@ -108,35 +56,6 @@ struct AddEditSongView: View {
                 .disabled(saveButtonDisabled())
             }
         }
-        .fullScreenCover(isPresented: $isFullScreen, onDismiss: setFullScreenToFalse) {
-            NavigationView {
-                VStack {
-                    HStack{
-                        Spacer()
-                        Button("Done") {
-                            dismiss()
-                            // MARK: - If picture is reloaded again, done button does not dismiss.
-                        }
-                        .font(.headline)
-                        .padding(.trailing)
-                    }
-
-                    image?
-                        .resizable()
-                        .scaledToFit()
-                }
-            }
-        }
-    }
-    
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        print(inputImage)
-        image = Image(uiImage: inputImage)
-    }
-    
-    func setFullScreenToFalse() {
-        isFullScreen = false
     }
     
     @ViewBuilder
@@ -160,6 +79,33 @@ struct AddEditSongView: View {
         }
     }
     
+    @ViewBuilder
+    func QuickReferenceSection() -> some View {
+        Section {
+            TextField("Song Title", text: $title)
+            KeyPicker()
+            TextField("Style", text: $style)
+        } header: {
+            Text("Quick Reference Info")
+        }
+    }
+    
+    @ViewBuilder
+    func MoreSongInfoSection() -> some View {
+        Section {
+            TextField("Composer", text: $composer)
+            TextField("Date Composed", text: $yearComposed)
+            Button("Add Entry") {
+                // AddEntryView()
+            }
+            
+            // MARK: - Need to be able to save image to Song Object when selected and replace when changed.
+            // MARK: - Need option to use camera
+        } header: {
+            Text("More Info")
+        }
+    }
+    
     func saveButtonDisabled() -> Bool {
         if title.isEmpty || style.isEmpty {
             return true
@@ -177,16 +123,12 @@ struct AddEditSongView: View {
             newSong.composer = composer
             newSong.yearComposed = yearComposed
             
-            // Save Image (Core Data Binary Data Type)
-            newSong.leadSheet = inputImage?.jpegData(compressionQuality: 1.0)
-            
         } else {
             song?.title = title
             song?.key = key
             song?.style = style
             song?.composer = composer
             song?.yearComposed = yearComposed
-//            song?.leadSheet = leadSheet
         }
         
         if moc.hasChanges {

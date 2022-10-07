@@ -11,8 +11,6 @@ struct SongIndexFilteredList: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest var fetchRequest: FetchedResults<Song>
     
-    @State private var showingDetailView = false
-    
     init(filter: String) {
         if filter.isEmpty {
             _fetchRequest = FetchRequest<Song>(sortDescriptors: [SortDescriptor(\.title)])

@@ -130,10 +130,9 @@
 				AF17909D28E1FB41002ECB29 /* Keys.swift */,
 				AFB5A78A28EE528200E2F186 /* CoreDataManager.swift */,
 				AF3D677528EBBF0C00667552 /* SongSort.swift */,
-				AFB5A76A28EC803800E2F186 /* ImagePicker.swift */,
+				AF162F4E28F0865F00230B6C /* Images */,
 				AFB5A78E28EF463F00E2F186 /* SongEntry.swift */,
 				AFB5A79028EF474800E2F186 /* SongEntries.swift */,
-				AFB5A76C28EC808700E2F186 /* ImageSaver.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,15 +145,32 @@
 				AF00BD2128CBFE38001A8D01 /* AddEditSongView.swift */,
 				AFB5A78C28EF43C400E2F186 /* AddEntryView.swift */,
 				AF00BD1F28CB9EC9001A8D01 /* SongTitleView.swift */,
-				FF79C93628CE5D740023AF8D /* SongIndexView.swift */,
-				AF1790A728E22BC5002ECB29 /* SongIndexFilteredList.swift */,
+				AF162F4B28F07D5500230B6C /* Song Index View */,
 				AF70C5AE28D588710007F4F7 /* SetListsView.swift */,
-				AF5A616728D576D500864239 /* SongTitleIndexView.swift */,
 				AF5A616528D55DB500864239 /* SongDetailView.swift */,
 				AF3D677728EBC16900667552 /* SortSelectionView.swift */,
 				AF475B8028E62E370075252E /* Fetch Lyrics */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AF162F4B28F07D5500230B6C /* Song Index View */ = {
+			isa = PBXGroup;
+			children = (
+				FF79C93628CE5D740023AF8D /* SongIndexView.swift */,
+				AF1790A728E22BC5002ECB29 /* SongIndexFilteredList.swift */,
+				AF5A616728D576D500864239 /* SongTitleIndexView.swift */,
+			);
+			path = "Song Index View";
+			sourceTree = "<group>";
+		};
+		AF162F4E28F0865F00230B6C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AFB5A76A28EC803800E2F186 /* ImagePicker.swift */,
+				AFB5A76C28EC808700E2F186 /* ImageSaver.swift */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		AF475B8028E62E370075252E /* Fetch Lyrics */ = {
