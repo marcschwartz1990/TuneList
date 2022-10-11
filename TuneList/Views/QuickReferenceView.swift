@@ -28,7 +28,7 @@ struct QuickReferenceView: View {
         NavigationView {
             List {
                 Section(header: Text("Songs")) {
-                    ForEach(songs, id: \Song.title.hashValue) { song in
+                    ForEach(songs) { song in
                         SongTitleView(song: song)
                     }
                     .onDelete(perform: deleteSongs)
