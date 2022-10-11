@@ -56,6 +56,7 @@ struct SongTitleView: View {
             }
         } label: {
             Image(systemName: "ellipsis")
+                .frame(width: 40, height: 40)
                 .font(.headline)
         }
     }

@@ -11,139 +11,95 @@ struct SongDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     let song: Song
-    @State private var trackObject: TrackObject? = TrackObject(track: Track(commontrackID: -1, hasLyrics: -1, trackName: "Sample", albumName: "Sample", artistName: "Sample"))
-    
-    // Image
-    @State private var image: Image?
-    @State private var inputImage: UIImage?
-    @State private var showingImagePicker = false
-    @State private var isFullScreen = false
-    
-    
-    // Lyrics
-    @State private var showLyricSearch = false
-    @State private var hasLyrics = false
     
     var body: some View {
-        VStack {
-            Text(song.wrappedTitle)
-                .lineLimit(1)
-                .allowsTightening(true)
-                .minimumScaleFactor(0.5)
-                .font(.custom("Georgia", size: 36))
-                .font(.largeTitle)
-                .padding([.top, .bottom])
-            
-            
-            Group {
-                HStack {
-                    HStack {
-                        Text("Key:")
-                            .foregroundColor(.secondary)
-                        Text(song.wrappedKey)
-                    }
-                    
-                    Text("|")
-                    
-                    HStack {
-                        Text("Style:")
-                            .foregroundColor(.secondary)
-                        Text(song.wrappedStyle)
-                            
-                    }
-                }
+        ScrollView {
+            VStack {
+                Text(song.wrappedTitle)
+                    .lineLimit(1)
+                    .allowsTightening(true)
+                    .minimumScaleFactor(0.5)
+                    .font(.custom("Georgia", size: 36))
+                    .font(.largeTitle)
+                    .padding([.top, .bottom])
                 
-                Divider()
                 
-                VStack {
-                    VStack {
-                        Text("Composed By")
-                            .foregroundColor(.secondary)
-                        Text(song.wrappedComposer)
-                    }
-                    .padding(.bottom)
-                    
-                    VStack {
-                        Text("Year Composed")
-                            .foregroundColor(.secondary)
-                        Text(song.wrappedYearComposed)
-                    }
-                    .padding(.bottom)
-                }
-                .padding()
-            }
-            .font(.custom("Georgia", size: 16))
-            
-            Spacer()
-            
-            Divider()
-            
-            // Image picker goes here
-            Button("Add Lead Sheet") {
-                showingImagePicker = true
-            }
-            
-            // MARK: - Need to be able to save image to Song Object when selected and replace when changed.
-            // MARK: - Need option to use camera
-            
-            image?
-                .resizable()
-                .scaledToFit()
-                .onTapGesture {
-                    isFullScreen = true
-                }
-            
-            Divider()
-            
-            Button("Find Lyrics") {
-                showLyricSearch = true
-            }
-            .buttonStyle(.bordered)
-            .padding()
-            Text(song.wrappedLyrics)
-        }
-        .padding()
-        .onChange(of: inputImage) { _ in loadImage() }
-        .sheet(isPresented: $showingImagePicker) {
-            ImagePicker(image: $inputImage)
-        }
-        .sheet(isPresented: $showLyricSearch) {
-            if hasLyrics {
-                LyricsView(song: trackObject)
-            } else {
-                SongLyricSearchView()
-            }
-        }
-        .fullScreenCover(isPresented: $isFullScreen, onDismiss: setFullScreenToFalse) {
-            NavigationView {
-                VStack {
-                    HStack{
-                        Spacer()
-                        Button("Done") {
-                            dismiss()
-                            // MARK: - If picture is reloaded again, done button does not dismiss.
+                Group {
+                    HStack {
+                        HStack {
+                            Text("Key:")
+                                .foregroundColor(.secondary)
+                            Text(song.wrappedKey)
                         }
-                        .font(.headline)
-                        .padding(.trailing)
+                        
+                        Text("|")
+                        
+                        HStack {
+                            Text("Style:")
+                                .foregroundColor(.secondary)
+                            Text(song.wrappedStyle)
+                        }
                     }
                     
-                    image?
-                        .resizable()
-                        .scaledToFit()
+                    Divider()
+                    
+                    VStack {
+                        if !song.wrappedForm.isEmpty {
+                            VStack {
+                                Text("Form")
+                                    .foregroundColor(.secondary)
+                                Text(song.wrappedForm)
+                            }
+                            .padding(.bottom)
+                        }
+                        
+                        if !song.wrappedComposer.isEmpty {
+                            VStack {
+                                Text("Composed By")
+                                    .foregroundColor(.secondary)
+                                Text(song.wrappedComposer)
+                            }
+                            .padding(.bottom)
+                        }
+                        
+                        if !song.wrappedLyricist.isEmpty {
+                            VStack {
+                                Text("Lyrics By")
+                                    .foregroundColor(.secondary)
+                                Text(song.wrappedLyricist)
+                            }
+                            .padding(.bottom)
+                        }
+                        
+                        if !song.wrappedYearComposed.isEmpty {
+                            VStack {
+                                Text("Year Composed")
+                                    .foregroundColor(.secondary)
+                                Text(song.wrappedYearComposed)
+                            }
+                            .padding(.bottom)
+                        }
+                        
+                        if !song.wrappedNotes.isEmpty {
+                            VStack {
+                                Text("Description")
+                                    .foregroundColor(.secondary)
+                                ScrollView {
+                                    Text(song.wrappedNotes)
+                                }
+                                .padding(10)
+                            }
+                        }
+                    }
+                    .padding()
                 }
+                .font(.custom("Georgia", size: 16))
+                
+                Spacer()
             }
+            .padding()
         }
     }
-    
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
-    }
-    
-    func setFullScreenToFalse() {
-        isFullScreen = false
-    }
-    
 }
 
 //struct SongDetailView_Previews: PreviewProvider {

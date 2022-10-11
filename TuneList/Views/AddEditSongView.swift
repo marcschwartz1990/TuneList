@@ -19,7 +19,10 @@ struct AddEditSongView: View {
     @State private var style: String = ""
     
     @State private var composer: String = ""
+    @State private var lyricist: String = ""
     @State private var yearComposed: String = ""
+    @State private var form: String = ""
+    @State private var notes: String = ""
     
     let navTitle: String
     let song: Song?
@@ -44,6 +47,9 @@ struct AddEditSongView: View {
                 style = song?.style ?? ""
                 composer = song?.composer ?? ""
                 yearComposed = song?.yearComposed ?? ""
+                lyricist = song?.lyricist ?? ""
+                form = song?.form ?? ""
+                notes = song?.notes ?? ""
             }
             .navigationTitle(navTitle)
             .toolbar {
@@ -92,13 +98,25 @@ struct AddEditSongView: View {
     @ViewBuilder
     func MoreSongInfoSection() -> some View {
         Section {
+            TextField("Form", text: $form)
             TextField("Composer", text: $composer)
+            TextField("Lyricist", text: $lyricist)
             TextField("Date Composed", text: $yearComposed)
-            Button("Add Entry") {
-                // AddEntryView()
-            }
         } header: {
             Text("More Info")
+        }
+        
+        Section {
+            ZStack(alignment: .leading) {
+                if notes.isEmpty {
+                    Text(" Write a description...")
+                        .foregroundColor(.secondary.opacity(0.5))
+                }
+                
+                TextEditor(text: $notes)
+            }
+        } header: {
+            Text("Description")
         }
     }
     
@@ -118,6 +136,9 @@ struct AddEditSongView: View {
             newSong.style = style
             newSong.composer = composer
             newSong.yearComposed = yearComposed
+            newSong.lyricist = lyricist
+            newSong.form = form
+            newSong.notes = notes
             
         } else {
             song?.title = title
@@ -125,6 +146,9 @@ struct AddEditSongView: View {
             song?.style = style
             song?.composer = composer
             song?.yearComposed = yearComposed
+            song?.lyricist = lyricist
+            song?.form = form
+            song?.notes = notes
         }
         
         if moc.hasChanges {
