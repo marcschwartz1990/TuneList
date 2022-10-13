@@ -21,7 +21,7 @@ struct SongTitleIndexView: View {
             showingSongDetailView = true
         } label: {
             Text(song.wrappedTitle)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
         }
         .sheet(isPresented: $showingSongDetailView) {
             SongDetailView(song: song, isPresented: $showingSongDetailView)
