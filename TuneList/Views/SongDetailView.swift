@@ -103,13 +103,7 @@ struct SongDetailView: View {
         }
         
         Divider()
-        Button("Return") {
-            dismiss()
-        }
-        .padding()
-        .padding([.trailing, .leading], 40.0)
-        .background(Color.secondary.opacity(0.2))
-        .clipShape(RoundedRectangle(cornerRadius: 12.0))
+        ReturnButton(isPresented: isPresented)
     }
 }
 

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AddSongView: View {
     @Environment(\.managedObjectContext) var moc
-    @Environment(\.dismiss) var dismiss
+    
+    @Binding var isPresented: Bool
     
     @State private var title: String = ""
     @State private var key: String = "C Major"
@@ -25,18 +26,23 @@ struct AddSongView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                QuickReferenceSection()
-                MoreSongInfoSection()
+            VStack {
+                Form {
+                    QuickReferenceSection()
+                    MoreSongInfoSection()
+                }
+                ReturnButton(isPresented: $isPresented)
             }
+            
             .navigationTitle("Add New Song")
             .toolbar {
                 Button("Save") {
                     saveSong()
-                    dismiss()
+                    isPresented = false
                 }
                 .disabled(saveButtonDisabled())
             }
+            
         }
     }
     
@@ -96,6 +102,7 @@ struct AddSongView: View {
         } header: {
             Text("Description")
         }
+        
     }
     
     func saveButtonDisabled() -> Bool {
@@ -123,8 +130,8 @@ struct AddSongView: View {
     }
 }
 
-struct AddSongView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddSongView()
-    }
-}
+//struct AddSongView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddSongView()
+//    }
+//}

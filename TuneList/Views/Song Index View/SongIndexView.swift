@@ -9,15 +9,32 @@ import SwiftUI
 
 struct SongIndexView: View {
     @Environment(\.managedObjectContext) var moc
-    @State private var selectedSong: Song?
+    
+    @FetchRequest(sortDescriptors: [])
+    private var songs: FetchedResults<Song>
+    
     @State private var searchText = ""
+    @State private var fontSize = 32.0
+    
+    @State private var showingAddSongView = false
     
     var body: some View {
         NavigationView {
             SongIndexFilteredList(filter: searchText)
         }
+        .fullScreenCover(isPresented: $showingAddSongView) {
+            AddSongView(isPresented: $showingAddSongView)
+        }
         .searchable(text: $searchText)
         .navigationTitle("Song Index")
+        .toolbar {
+            Button {
+                showingAddSongView = true
+            } label: {
+                Image(systemName: "plus.circle")
+            }
+        }
+        Text("Songs in Index: \(songs.count)")
     }
 }
 

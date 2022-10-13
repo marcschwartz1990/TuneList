@@ -10,25 +10,27 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        
         NavigationView {
-            List {
-                Section {
-                    NavigationLink {
-                        QuickReferenceView()
-                    } label: {
-                        Text("Quick Reference")
+                List {
+                    Section {
+                        NavigationLink {
+                            QuickReferenceView()
+                        } label: {
+                            Text("Quick Reference")
+                                .foregroundColor(.blue)
+                        }
+                        
+                        NavigationLink {
+                            SongIndexView()
+                        } label: {
+                            Text("Song Index")
+                        }
                     }
-                    
-                    NavigationLink {
-                        SongIndexView()
-                    } label: {
-                        Text("Song Index")
-                    }
+                    .navigationTitle("MyTuneList")
+                    .padding()
+                    .font(.headline)
                 }
-                .padding()
-                .font(.headline)
-            }
+                .listStyle(.insetGrouped)
         }
     }
 }

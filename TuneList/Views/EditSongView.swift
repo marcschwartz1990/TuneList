@@ -44,9 +44,12 @@ struct EditSongView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                QuickReferenceSection()
-                MoreSongInfoSection()
+            VStack {
+                Form {
+                    QuickReferenceSection()
+                    MoreSongInfoSection()
+                }
+                ReturnButton(isPresented: $isPresented)
             }
             .navigationTitle("Add New Song")
             .toolbar {

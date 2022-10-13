@@ -10,13 +10,17 @@ import SwiftUI
 struct SongTitleIndexView: View {
     @State private var showingSongDetailView = false
     
-    let song: Song
+    @StateObject var song: Song
+    
+    init(song: Song) {
+        _song = StateObject(wrappedValue: song)
+    }
     
     var body: some View {
         Button {
             showingSongDetailView = true
         } label: {
-            Text("\(song.title ?? "Unknown Song")")
+            Text(song.wrappedTitle)
                 .foregroundColor(.black)
         }
         .sheet(isPresented: $showingSongDetailView) {

@@ -21,24 +21,30 @@ struct QuickReferenceView: View {
     
     @State private var selectedSort = SongSort.default
     @State private var showingAddSongView = false
-    @State private var selectedSong: Song?
     
     
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Songs")) {
+                Section {
                     ForEach(songs) { song in
                         SongTitleView(song: song)
                     }
                     .onDelete(perform: deleteSongs)
+                } header: {
+                    if songs.count < 1 {
+                        Text("")
+                    } else {
+                        Text("Songs")
+                    }
                 }
             }
-            .navigationTitle("Quick Reference")
-            .sheet(isPresented: $showingAddSongView) {
-                AddSongView()
+            
+            .fullScreenCover(isPresented: $showingAddSongView) {
+                AddSongView(isPresented: $showingAddSongView)
             }
         }
+        .navigationTitle("Quick Reference")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 SortSelectionView(
