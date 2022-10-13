@@ -1,38 +1,45 @@
 //
-//  SongInfoEditorView.swift
+//  EditSongView.swift
 //  TuneList
 //
-//  Created by Marc-Developer on 9/9/22.
+//  Created by Marc-Developer on 10/13/22.
 //
-
-// Textfield needs to bind to an @State property. @State properties cannot be initialized in init() -- error: Variable 'self.title' used before being initialized --.
-
 
 import SwiftUI
 
-struct AddEditSongView: View {
+struct EditSongView: View {
     @Environment(\.managedObjectContext) var moc
-    @Environment(\.dismiss) var dismiss
     
-    @State private var title: String = ""
-    @State private var key: String = "C Major"
-    @State private var style: String = ""
+    @ObservedObject var song: Song
     
-    @State private var composer: String = ""
-    @State private var lyricist: String = ""
-    @State private var yearComposed: String = ""
-    @State private var form: String = ""
-    @State private var notes: String = ""
+    @Binding var isPresented: Bool
     
-    let navTitle: String
-    let song: Song?
+    @State private var title: String
+    @State private var key: String
+    @State private var style: String
+    
+    @State private var composer: String
+    @State private var lyricist: String
+    @State private var yearComposed: String
+    @State private var form: String
+    @State private var notes: String
+    
     let keys = Keys()
-    let isNewSong: Bool
     
-    init(song: Song?, isNewSong: Bool) {
+    init(song: Song, isPresented: Binding<Bool>) {
         self.song = song
-        self.isNewSong = isNewSong
-        self.navTitle = (song != nil) == true ? "Edit Song" : "Add New Song"
+        title = song.title ?? ""
+        key = song.key ?? "C Major"
+        style = song.style ?? ""
+        
+        composer = song.composer ?? ""
+        lyricist = song.lyricist ?? ""
+        yearComposed = song.yearComposed ?? ""
+        form = song.form ?? ""
+        notes = song.notes ?? ""
+        
+        self._isPresented = isPresented
+        
     }
     
     var body: some View {
@@ -41,23 +48,12 @@ struct AddEditSongView: View {
                 QuickReferenceSection()
                 MoreSongInfoSection()
             }
-            .onAppear {
-                title = song?.title ?? ""
-                key = song?.key ?? "C Major"
-                style = song?.style ?? ""
-                composer = song?.composer ?? ""
-                yearComposed = song?.yearComposed ?? ""
-                lyricist = song?.lyricist ?? ""
-                form = song?.form ?? ""
-                notes = song?.notes ?? ""
-            }
-            .navigationTitle(navTitle)
+            .navigationTitle("Add New Song")
             .toolbar {
                 Button("Save") {
-                    saveSong()
-                    dismiss()
+                    updateSong()
+                    isPresented = false
                 }
-                
                 .disabled(saveButtonDisabled())
             }
         }
@@ -82,6 +78,7 @@ struct AddEditSongView: View {
                 Text("minor keys")
             }
         }
+        .pickerStyle(.menu)
     }
     
     @ViewBuilder
@@ -125,31 +122,17 @@ struct AddEditSongView: View {
             return true
         }
         return false
-        }
+    }
     
-    func saveSong() {
-        if isNewSong {
-            let newSong = Song(context: moc)
-            newSong.id = UUID()
-            newSong.title = title
-            newSong.key = key
-            newSong.style = style
-            newSong.composer = composer
-            newSong.yearComposed = yearComposed
-            newSong.lyricist = lyricist
-            newSong.form = form
-            newSong.notes = notes
-            
-        } else {
-            song?.title = title
-            song?.key = key
-            song?.style = style
-            song?.composer = composer
-            song?.yearComposed = yearComposed
-            song?.lyricist = lyricist
-            song?.form = form
-            song?.notes = notes
-        }
+    func updateSong() {
+        song.title = title
+        song.key = key
+        song.style = style
+        song.composer = composer
+        song.yearComposed = yearComposed
+        song.lyricist = lyricist
+        song.form = form
+        song.notes = notes
         
         if moc.hasChanges {
             try? moc.save()
@@ -157,8 +140,8 @@ struct AddEditSongView: View {
     }
 }
 
-//struct AddEditSongView_Previews: PreviewProvider {
+//struct EditSongView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        AddSongView()
+//        EditSongView()
 //    }
 //}

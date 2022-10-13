@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct SongTitleIndexView: View {
-    @State private var showingDetailView = false
+    @State private var showingSongDetailView = false
     
     let song: Song
     
     var body: some View {
         Button {
-            showingDetailView = true
+            showingSongDetailView = true
         } label: {
             Text("\(song.title ?? "Unknown Song")")
                 .foregroundColor(.black)
         }
-        .sheet(isPresented: $showingDetailView) {
-            SongDetailView(song: song)
+        .sheet(isPresented: $showingSongDetailView) {
+            SongDetailView(song: song, isPresented: $showingSongDetailView)
         }
     }
 }

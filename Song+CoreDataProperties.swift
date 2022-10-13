@@ -20,7 +20,6 @@ extension Song {
     @NSManaged public var key: String?
     @NSManaged public var style: String?
     @NSManaged public var title: String?
-    @NSManaged public var lyrics: String?
     @NSManaged public var composer: String?
     @NSManaged public var yearComposed: String?
     @NSManaged public var lyricist: String?

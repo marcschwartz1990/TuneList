@@ -20,7 +20,7 @@ struct QuickReferenceView: View {
     private var songs: FetchedResults<Song>
     
     @State private var selectedSort = SongSort.default
-    @State private var showingAddEditSong = false
+    @State private var showingAddSongView = false
     @State private var selectedSong: Song?
     
     
@@ -35,8 +35,8 @@ struct QuickReferenceView: View {
                 }
             }
             .navigationTitle("Quick Reference")
-            .sheet(isPresented: $showingAddEditSong, onDismiss: didDismiss) {
-                AddEditSongView(song: selectedSong, isNewSong: true)
+            .sheet(isPresented: $showingAddSongView) {
+                AddSongView()
             }
         }
         .toolbar {
@@ -49,16 +49,12 @@ struct QuickReferenceView: View {
                 }
                 
                 Button {
-                    showingAddEditSong = true
+                    showingAddSongView = true
                 } label: {
                     Image(systemName: "plus.circle")
                 }
             }
         }
-    }
-    
-    func didDismiss() {
-        showingAddEditSong = false
     }
     
     func deleteSongs(at offsets: IndexSet) {

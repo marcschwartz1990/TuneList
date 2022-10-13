@@ -6,13 +6,10 @@
         <attribute name="form" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="key" optional="YES" attributeType="String"/>
-        <attribute name="leadSheet" optional="YES" attributeType="Binary"/>
         <attribute name="lyricist" optional="YES" attributeType="String"/>
-        <attribute name="lyrics" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="style" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="userEntries" optional="YES" attributeType="Binary"/>
         <attribute name="yearComposed" optional="YES" attributeType="String"/>
     </entity>
 </model>

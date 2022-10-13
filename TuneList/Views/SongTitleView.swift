@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct SongTitleView: View {
-    @ObservedObject var song: Song
+    @StateObject var song: Song
     
-    @State private var isShowingSongDetailView = false
-    @State private var isShowingAddEditSongView = false
+    @State private var showingSongDetailView = false
+    @State private var showingEditSongView = false
+    
+    init(song: Song) {
+        _song = StateObject(wrappedValue: song)
+    }
     
     var body: some View {
         HStack {
@@ -20,11 +24,11 @@ struct SongTitleView: View {
             Spacer()
             
             SongMenuView()
-            .sheet(isPresented: $isShowingSongDetailView) {
-                SongDetailView(song: song)
+            .fullScreenCover(isPresented: $showingSongDetailView) {
+                SongDetailView(song: song, isPresented: $showingSongDetailView)
             }
-            .sheet(isPresented: $isShowingAddEditSongView) {
-                AddEditSongView(song: song, isNewSong: false)
+            .fullScreenCover(isPresented: $showingEditSongView) {
+                EditSongView(song: song, isPresented: $showingEditSongView)
             }
         }
         .padding()
@@ -48,11 +52,11 @@ struct SongTitleView: View {
     func SongMenuView() -> some View {
         Menu {
             Button("Song Details") {
-                showSongDetailView()
+                showingSongDetailView = true
             }
             
             Button("Edit Song Info") {
-                showAddEditSongView()
+                showingEditSongView = true
             }
         } label: {
             Image(systemName: "ellipsis")
@@ -60,15 +64,6 @@ struct SongTitleView: View {
                 .font(.headline)
         }
     }
-    
-    func showSongDetailView() {
-        isShowingSongDetailView = true
-    }
-    
-    func showAddEditSongView() {
-        isShowingAddEditSongView = true
-    }
-    
 }
 
 // MARK: - Can I make an example preview that works everywhere from song?
