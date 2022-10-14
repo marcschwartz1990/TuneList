@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-struct ReturnButton: View {
+struct SaveButton: View {
     @Binding var isPresented: Bool
+    
+    let action: () -> Void
     
     var body: some View {
         Button {
             isPresented = false
+            action()
         } label: {
-            Text("Return")
+            Text("Save")
                 .frame(maxWidth: .infinity, minHeight: 44)
                 .background(Color("sky.blue"))
                 .tint(.white)
@@ -24,8 +27,8 @@ struct ReturnButton: View {
     }
 }
 
-//struct ReturnButton_Previews: PreviewProvider {
+//struct SaveButton_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ReturnButton()
+//        SaveButton()
 //    }
 //}

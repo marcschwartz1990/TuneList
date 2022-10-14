@@ -17,7 +17,6 @@ struct ContentView: View {
                             QuickReferenceView()
                         } label: {
                             Text("Quick Reference")
-                                .foregroundColor(.blue)
                         }
                         
                         NavigationLink {
@@ -26,12 +25,15 @@ struct ContentView: View {
                             Text("Song Index")
                         }
                     }
+                    
                     .navigationTitle("MyTuneList")
                     .padding()
                     .font(.headline)
                 }
                 .listStyle(.insetGrouped)
+                .navigationBarTitleDisplayMode(.automatic)
         }
+        
     }
 }
 

@@ -11,99 +11,95 @@ struct SongDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     let song: Song
-    var isPresented: Binding<Bool>
+    var isPresented: Binding<Bool>?
     
     var body: some View {
-        ScrollView {
-            VStack {
-                Text(song.wrappedTitle)
-                    .lineLimit(1)
-                    .allowsTightening(true)
-                    .minimumScaleFactor(0.5)
-                    .font(.custom("Georgia", size: 36))
-                    .font(.largeTitle)
-                    .padding([.top, .bottom])
-                
-                Group {
-                    HStack {
-                        HStack {
-                            Text("Key:")
-                                .foregroundColor(.secondary)
-                            Text(song.wrappedKey)
-                        }
-                        
-                        Text("|")
-                        
-                        HStack {
-                            Text("Style:")
-                                .foregroundColor(.secondary)
-                            Text(song.wrappedStyle)
-                        }
-                    }
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    Text(song.wrappedTitle)
+                        .lineLimit(1)
+                        .allowsTightening(true)
+                        .minimumScaleFactor(0.5)
+                        .font(.custom("Georgia", size: 36))
+                        .font(.largeTitle)
+                        .padding([.top, .bottom])
                     
-                    Divider()
                     
-                    VStack {
-                        if !song.wrappedForm.isEmpty {
-                            VStack {
-                                Text("Form")
+                    Group {
+                        HStack {
+                            HStack {
+                                Text("Key:")
                                     .foregroundColor(.secondary)
-                                Text(song.wrappedForm)
+                                Text(song.wrappedKey)
                             }
-                            .padding(.bottom)
+                            
+                            Text("|")
+                            
+                            HStack {
+                                Text("Style:")
+                                    .foregroundColor(.secondary)
+                                Text(song.wrappedStyle)
+                            }
                         }
                         
-                        if !song.wrappedComposer.isEmpty {
-                            VStack {
-                                Text("Composed By")
-                                    .foregroundColor(.secondary)
-                                Text(song.wrappedComposer)
-                            }
-                            .padding(.bottom)
-                        }
+                        Divider()
                         
-                        if !song.wrappedLyricist.isEmpty {
-                            VStack {
-                                Text("Lyrics By")
-                                    .foregroundColor(.secondary)
-                                Text(song.wrappedLyricist)
-                            }
-                            .padding(.bottom)
-                        }
-                        
-                        if !song.wrappedYearComposed.isEmpty {
-                            VStack {
-                                Text("Year Composed")
-                                    .foregroundColor(.secondary)
-                                Text(song.wrappedYearComposed)
-                            }
-                            .padding(.bottom)
-                        }
-                        
-                        if !song.wrappedNotes.isEmpty {
-                            VStack {
-                                Text("Description")
-                                    .foregroundColor(.secondary)
-                                ScrollView {
-                                    Text(song.wrappedNotes)
+                        VStack {
+                            if !song.wrappedForm.isEmpty {
+                                VStack {
+                                    Text("Form")
+                                        .foregroundColor(.secondary)
+                                    Text(song.wrappedForm)
                                 }
-                                .padding(10)
+                                .padding(.bottom)
+                            }
+                            
+                            if !song.wrappedComposer.isEmpty {
+                                VStack {
+                                    Text("Composed By")
+                                        .foregroundColor(.secondary)
+                                    Text(song.wrappedComposer)
+                                }
+                                .padding(.bottom)
+                            }
+                            
+                            if !song.wrappedLyricist.isEmpty {
+                                VStack {
+                                    Text("Lyrics By")
+                                        .foregroundColor(.secondary)
+                                    Text(song.wrappedLyricist)
+                                }
+                                .padding(.bottom)
+                            }
+                            
+                            if !song.wrappedYearComposed.isEmpty {
+                                VStack {
+                                    Text("Year Composed")
+                                        .foregroundColor(.secondary)
+                                    Text(song.wrappedYearComposed)
+                                }
+                                .padding(.bottom)
+                            }
+                            
+                            if !song.wrappedNotes.isEmpty {
+                                VStack {
+                                    Text("Description")
+                                        .foregroundColor(.secondary)
+                                    ScrollView {
+                                        Text(song.wrappedNotes)
+                                    }
+                                    .padding(10)
+                                }
                             }
                         }
+                        .padding()
                     }
-                    .padding()
+                    .font(.custom("Georgia", size: 16))
                 }
-                .font(.custom("Georgia", size: 16))
-                
-                Spacer()
-                
-
+                .padding()
             }
+            .clipped()
             .padding()
-        }
-        
-        Divider()
-        ReturnButton(isPresented: isPresented)
     }
 }
 

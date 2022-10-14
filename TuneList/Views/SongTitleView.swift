@@ -24,10 +24,10 @@ struct SongTitleView: View {
             Spacer()
             
             SongMenuView()
-            .fullScreenCover(isPresented: $showingSongDetailView) {
+            .sheet(isPresented: $showingSongDetailView) {
                 SongDetailView(song: song, isPresented: $showingSongDetailView)
             }
-            .fullScreenCover(isPresented: $showingEditSongView) {
+            .sheet(isPresented: $showingEditSongView) {
                 EditSongView(song: song, isPresented: $showingEditSongView)
             }
         }

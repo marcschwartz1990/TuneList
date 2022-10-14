@@ -31,18 +31,21 @@ struct AddSongView: View {
                     QuickReferenceSection()
                     MoreSongInfoSection()
                 }
-                ReturnButton(isPresented: $isPresented)
-            }
-            
-            .navigationTitle("Add New Song")
-            .toolbar {
-                Button("Save") {
+                SaveButton(isPresented: $isPresented) {
                     saveSong()
-                    isPresented = false
                 }
                 .disabled(saveButtonDisabled())
             }
-            
+            .navigationTitle("Add New Song")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isPresented = false
+                    } label: {
+                        Image(systemName: "x.circle.fill")
+                    }
+                }
+            }
         }
     }
     

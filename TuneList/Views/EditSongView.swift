@@ -14,6 +14,8 @@ struct EditSongView: View {
     
     @Binding var isPresented: Bool
     
+    @State private var showingCancelAlert = false
+    
     @State private var title: String
     @State private var key: String
     @State private var style: String
@@ -49,15 +51,20 @@ struct EditSongView: View {
                     QuickReferenceSection()
                     MoreSongInfoSection()
                 }
-                ReturnButton(isPresented: $isPresented)
-            }
-            .navigationTitle("Add New Song")
-            .toolbar {
-                Button("Save") {
+                SaveButton(isPresented: $isPresented) {
                     updateSong()
-                    isPresented = false
                 }
                 .disabled(saveButtonDisabled())
+            }
+            .navigationTitle("Edit Song")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isPresented = false
+                    } label: {
+                        Image(systemName: "x.circle.fill")
+                    }
+                }
             }
         }
     }
