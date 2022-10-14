@@ -19,7 +19,7 @@ struct SaveButton: View {
         } label: {
             Text("Save")
                 .frame(maxWidth: .infinity, minHeight: 44)
-                .background(Color("sky.blue"))
+                .background(Color("blue"))
                 .tint(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
         }
