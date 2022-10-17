@@ -66,8 +66,6 @@ struct SongTitleView: View {
     }
 }
 
-// MARK: - Can I make an example preview that works everywhere from song?
-
 struct SongTitleView_Previews: PreviewProvider {
     static let dataController = DataController()
     static var song: Song = {
@@ -79,10 +77,8 @@ struct SongTitleView_Previews: PreviewProvider {
         return song
     }()
     
-
     static var previews: some View {
         SongTitleView(song: song)
             .environment(\.managedObjectContext, dataController.container.viewContext)
-
     }
 }

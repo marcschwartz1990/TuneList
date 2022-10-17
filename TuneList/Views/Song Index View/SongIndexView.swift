@@ -15,7 +15,6 @@ struct SongIndexView: View {
     
     @State private var searchText = ""
     @State private var fontSize = 32.0
-    
     @State private var showingAddSongView = false
     
     var body: some View {

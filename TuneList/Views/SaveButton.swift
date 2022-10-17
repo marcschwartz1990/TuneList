@@ -26,9 +26,3 @@ struct SaveButton: View {
         .padding()
     }
 }
-
-//struct SaveButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SaveButton()
-//    }
-//}

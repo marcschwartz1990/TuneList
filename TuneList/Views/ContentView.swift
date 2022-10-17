@@ -25,7 +25,6 @@ struct ContentView: View {
                             Text("Song Index")
                         }
                     }
-                    
                     .navigationTitle("MyTuneList")
                     .padding()
                     .font(.headline)
@@ -33,7 +32,6 @@ struct ContentView: View {
                 .listStyle(.insetGrouped)
                 .navigationBarTitleDisplayMode(.automatic)
         }
-        
     }
 }
 

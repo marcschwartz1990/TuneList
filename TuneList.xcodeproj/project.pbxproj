@@ -120,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				AF00BD0F28CA7937001A8D01 /* ContentView.swift */,
-				AF3892A128F865DB00929CE3 /* SaveButton.swift */,
 				AF00BD1D28CA7970001A8D01 /* QuickReferenceView.swift */,
 				AF00BD1F28CB9EC9001A8D01 /* SongTitleView.swift */,
 				AF38929B28F7C4FE00929CE3 /* AddSongView.swift */,
@@ -128,6 +127,7 @@
 				AF162F4B28F07D5500230B6C /* Song Index View */,
 				AF5A616528D55DB500864239 /* SongDetailView.swift */,
 				AF3D677728EBC16900667552 /* SortSelectionView.swift */,
+				AF3892A128F865DB00929CE3 /* SaveButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
